@@ -8,7 +8,7 @@ public class SimpleCarController : MonoBehaviour {
     private float m_verticalInput;
     private float m_steeringAngle;
     private float m_motorFprce;
-
+   
     public float maxSteerAngle = 30;
     public float motorFprce = 50;
     public bool CheckVer;
@@ -18,13 +18,7 @@ public class SimpleCarController : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        //GetInput();
-        //steer();
-        // Accelerate();
-
-        //steerduong();
-        //Accelerateduong();
-        //steeram();
+        
         UpdateWheelPoses();
     }
 
@@ -38,40 +32,33 @@ public class SimpleCarController : MonoBehaviour {
   
 
     public void steerduong(int b)
-    {
-       
-             m_steeringAngle = maxSteerAngle * b;
+    {          
+            m_steeringAngle = maxSteerAngle * b;
             frontleftW.steerAngle = m_steeringAngle;
             frontrightW.steerAngle = m_steeringAngle;
- 
     }
-
     public void steeram(int b2)
     {
         m_steeringAngle = maxSteerAngle * b2;
         frontleftW.steerAngle = m_steeringAngle;
         frontrightW.steerAngle = m_steeringAngle;
-
     }
 
     public void Accelerateduong(int a)
     {
-            text.text = "move duong";
-            Debug.Log("up");
+           
             m_motorFprce = a * motorFprce;
+        
             rearleftW.motorTorque = m_motorFprce;
             rearrightW.motorTorque = m_motorFprce;
-        
+        Debug.Log("" + m_motorFprce * Time.deltaTime);
     }
 
     public void Accelerateam(int a2)
-    {
-        text.text = "move am";
-        Debug.Log("down");
+    {     
         m_motorFprce = a2 * motorFprce;
         rearleftW.motorTorque = m_motorFprce;
         rearrightW.motorTorque = m_motorFprce;
-
     }
 
     private void UpdateWheelPoses()

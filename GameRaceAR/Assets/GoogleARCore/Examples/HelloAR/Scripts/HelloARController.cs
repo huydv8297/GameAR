@@ -24,6 +24,7 @@ namespace GoogleARCore.Examples.HelloAR
     using GoogleARCore;
     using GoogleARCore.Examples.Common;
     using UnityEngine;
+    using UnityEngine.UI;
 
 #if UNITY_EDITOR
     // Set up touch input propagation while using Instant Preview in the editor.
@@ -76,13 +77,22 @@ namespace GoogleARCore.Examples.HelloAR
         /// </summary>
         private bool m_IsQuitting = false;
         public bool isHaveCar = false;
+        private float count = 0;
+        public Text textCount, textposx, textposz;
+        public Keyboard keyboard;
+
+
 
         /// <summary>
         /// The Unity Update() method.
         /// </summary>
         public void Update()
         {
+
             _UpdateApplicationLifecycle();
+
+            textposx.text = FirstPersonCamera.transform.position.x.ToString();
+            textposz.text = FirstPersonCamera.transform.position.z.ToString();
 
             // Hide snackbar when currently tracking at least one plane.
             // 
@@ -101,55 +111,73 @@ namespace GoogleARCore.Examples.HelloAR
 
             // If the player has not touched the screen, we are done with this update.
             //
+
             Touch touch;
-            if (!isHaveCar && Input.touchCount < 1 || (touch = Input.GetTouch(0)).phase != TouchPhase.Began)//xác định số lần chạm hoặc không phải ngón tay chạm vào mh
+            if (Input.touchCount < 1 || (touch = Input.GetTouch(0)).phase != TouchPhase.Began)
             {
                 return;
             }
-            isHaveCar = true;
-            // Raycast against the location the player touched to search for planes.
-            TrackableHit hit;
-            TrackableHitFlags raycastFilter = TrackableHitFlags.PlaneWithinPolygon |
-                TrackableHitFlags.FeaturePointWithSurfaceNormal;
 
-            if (Frame.Raycast(touch.position.x, touch.position.y, raycastFilter, out hit))
+            if (isHaveCar == true)
             {
-                // Use hit pose and camera pose to check if hittest is from the
-                // back of the plane, if it is, no need to create the anchor.
-                if ((hit.Trackable is DetectedPlane) &&
-                    Vector3.Dot(FirstPersonCamera.transform.position - hit.Pose.position,
-                        hit.Pose.rotation * Vector3.up) < 0)
+                Debug.Log("bbbbbbbbbbbbbb");
+
+            }
+            else
+            {
+
+                // Raycast against the location the player touched to search for planes.
+                TrackableHit hit;
+                TrackableHitFlags raycastFilter = TrackableHitFlags.PlaneWithinPolygon |
+                    TrackableHitFlags.FeaturePointWithSurfaceNormal;
+
+                if (Frame.Raycast(touch.position.x, touch.position.y, raycastFilter, out hit))
                 {
-                    Debug.Log("Hit at back of the current DetectedPlane");
-                }
-                else
-                {
-                    // Choose the Andy model for the Trackable that got hit.
-                    GameObject prefab;
-                    if (hit.Trackable is FeaturePoint)
+                    // Use hit pose and camera pose to check if hittest is from the
+                    // back of the plane, if it is, no need to create the anchor.
+                    if ((hit.Trackable is DetectedPlane) &&
+                        Vector3.Dot(FirstPersonCamera.transform.position - hit.Pose.position,
+                            hit.Pose.rotation * Vector3.up) < 0)
                     {
-                        prefab = AndyPointPrefab;
+                        Debug.Log("Hit at back of the current DetectedPlane");
                     }
                     else
                     {
-                        prefab = AndyPlanePrefab;
+                        // Choose the Andy model for the Trackable that got hit.
+                        GameObject prefab;
+                        if (hit.Trackable is FeaturePoint)
+                        {
+                            prefab = AndyPointPrefab;
+                        }
+                        else
+                        {
+                            prefab = AndyPlanePrefab;
+                            count += 1;
+                            textCount.text = count.ToString();
+                        }
+
+                        // Instantiate Andy model at the hit pose.
+                        var andyObject = Instantiate(prefab, hit.Pose.position, hit.Pose.rotation);
+                        keyboard.car = andyObject.GetComponent<SimpleCarController>();
+                        isHaveCar = true;
+                        // Compensate for the hitPose rotation facing away from the raycast (i.e. camera).
+                        andyObject.transform.Rotate(0, k_ModelRotation, 0, Space.Self);
+                        andyObject.GetComponent<AICarTest>().MoveSpeedCar();
+
+                        // Create an anchor to allow ARCore to track the hitpoint as understanding of the physical
+                        // world evolves.
+                        var anchor = hit.Trackable.CreateAnchor(hit.Pose);
+
+                        // Make Andy model a child of the anchor.
+                        andyObject.transform.parent = anchor.transform;
                     }
-
-                    // Instantiate Andy model at the hit pose.
-                    var andyObject = Instantiate(prefab, hit.Pose.position, hit.Pose.rotation);
-
-                    // Compensate for the hitPose rotation facing away from the raycast (i.e. camera).
-                    andyObject.transform.Rotate(0, k_ModelRotation, 0, Space.Self);
-
-                    // Create an anchor to allow ARCore to track the hitpoint as understanding of the physical
-                    // world evolves.
-                    var anchor = hit.Trackable.CreateAnchor(hit.Pose);
-
-                    // Make Andy model a child of the anchor.
-                    andyObject.transform.parent = anchor.transform;
                 }
-            }
+            }   
         }
+
+
+
+
 
         /// <summary>
         /// Check and update the application lifecycle.

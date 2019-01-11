@@ -3,10 +3,10 @@
 --- !u!43 &4300000
 Mesh:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Fir_05_Small_Trial_LOD2
-  serializedVersion: 8
+  serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
     firstByte: 0
@@ -32,7 +32,6 @@ Mesh:
   m_KeepIndices: 1
   m_IndexFormat: 0
   m_IndexBuffer: 000001000200000002000300040000000300040005000000010006000200010007000600080009000a0008000a000b000c0008000b000c000d0008000e000d000c000e000f000d00100011001200100012001300140010001300140013001500120011001600120016001700180019001a0018001a001b001a0019001c001a001c001d001d001c001e001d001e001f00
-  m_Skin: []
   m_VertexData:
     serializedVersion: 2
     m_VertexCount: 32
@@ -61,6 +60,14 @@ Mesh:
       offset: 52
       format: 0
       dimension: 2
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
     - stream: 0
       offset: 0
       format: 0
@@ -145,4 +152,6 @@ Mesh:
   m_MeshUsageFlags: 0
   m_BakedConvexCollisionMesh: 
   m_BakedTriangleCollisionMesh: 
+  m_MeshMetrics[0]: 1
+  m_MeshMetrics[1]: 1
   m_MeshOptimized: 0

@@ -8,15 +8,15 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications: []
     m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 0}
+  m_SourcePrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1870620672264620}
-  m_IsPrefabParent: 1
+  m_IsPrefabAsset: 1
 --- !u!1 &1125318731960984
 GameObject:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
+  serializedVersion: 6
   m_Component:
   - component: {fileID: 4520959705298378}
   - component: {fileID: 33913191949187738}
@@ -31,9 +31,9 @@ GameObject:
 --- !u!1 &1273370728265368
 GameObject:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
+  serializedVersion: 6
   m_Component:
   - component: {fileID: 4212962786622242}
   - component: {fileID: 33036170681005836}
@@ -48,9 +48,9 @@ GameObject:
 --- !u!1 &1870620672264620
 GameObject:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
+  serializedVersion: 6
   m_Component:
   - component: {fileID: 4480424134626790}
   - component: {fileID: 33687997586786778}
@@ -65,7 +65,7 @@ GameObject:
 --- !u!4 &4212962786622242
 Transform:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1273370728265368}
   m_LocalRotation: {x: -0, y: 0.0005964944, z: -0, w: 0.9999999}
@@ -78,7 +78,7 @@ Transform:
 --- !u!4 &4480424134626790
 Transform:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1870620672264620}
   m_LocalRotation: {x: -0, y: -0.00785689, z: -0, w: 0.9999692}
@@ -93,7 +93,7 @@ Transform:
 --- !u!4 &4520959705298378
 Transform:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1125318731960984}
   m_LocalRotation: {x: -0, y: 0.0041256514, z: -0, w: 0.99999154}
@@ -106,7 +106,7 @@ Transform:
 --- !u!23 &23017205510094248
 MeshRenderer:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1125318731960984}
   m_Enabled: 1
@@ -141,7 +141,7 @@ MeshRenderer:
 --- !u!23 &23196731646657404
 MeshRenderer:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1870620672264620}
   m_Enabled: 1
@@ -176,7 +176,7 @@ MeshRenderer:
 --- !u!23 &23377311331257140
 MeshRenderer:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1273370728265368}
   m_Enabled: 1
@@ -211,21 +211,21 @@ MeshRenderer:
 --- !u!33 &33036170681005836
 MeshFilter:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1273370728265368}
   m_Mesh: {fileID: 4300028, guid: e2908aafff0f46049ad80634f3279fee, type: 3}
 --- !u!33 &33687997586786778
 MeshFilter:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1870620672264620}
   m_Mesh: {fileID: 4300028, guid: e2908aafff0f46049ad80634f3279fee, type: 3}
 --- !u!33 &33913191949187738
 MeshFilter:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1125318731960984}
   m_Mesh: {fileID: 4300028, guid: e2908aafff0f46049ad80634f3279fee, type: 3}
