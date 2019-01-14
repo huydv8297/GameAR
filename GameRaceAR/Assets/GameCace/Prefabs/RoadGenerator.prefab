@@ -201,8 +201,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
-  material: {fileID: 2100000, guid: f182e2714eb8a714a99ed091081ce16c, type: 2}
-  rotation: {x: 0, y: 90, z: 0}
+  material: {fileID: 2100000, guid: 47390f6bc8cfbde4fb24f5fbb333d7d2, type: 2}
+  rotation: {x: 0, y: 0, z: 0}
   YOffset: 0
   ZOffset: 0
   scale: 0.5

@@ -96,7 +96,6 @@ public class RoadManager : MonoBehaviour
         Debug.Log("Tag");
         foreach(GameObject child in spline.GetComponent<ExempleRailling>().meshes)
         {
-            Debug.Log(spline.GetComponent<ExempleRailling>().meshes.Count);
             child.tag = "terria";
         }
 
