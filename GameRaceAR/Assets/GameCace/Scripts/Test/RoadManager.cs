@@ -19,7 +19,7 @@ public class RoadManager : MonoBehaviour
     public TerrianController terrianController;
     public GameObject bridgeGO;
     public Toggle road, bridge, river, roadLine, roadHight;
-
+    public Text log;
 
     void Awake()
     {
@@ -33,6 +33,7 @@ public class RoadManager : MonoBehaviour
         if (!EventSystem.current.IsPointerOverGameObject() && Input.GetMouseButtonDown(0))
         {
             Debug.Log("KeyDown");
+            log.text = "KeyDown";
             if (roadLine.isOn || roadHight.isOn)
                 isRoadLine = false;
             isCreate = true;
@@ -41,9 +42,9 @@ public class RoadManager : MonoBehaviour
         if (!EventSystem.current.IsPointerOverGameObject() && Input.GetMouseButtonUp(0))
         {
             Debug.Log("KeyUp");
-            
+            log.text = "KeyUp";
 
-            if(river.isOn && spline != null)
+            if (river.isOn && spline != null)
             {
                 foreach (var node in spline.nodes)
                 {
@@ -108,12 +109,16 @@ public class RoadManager : MonoBehaviour
         Debug.Log("OnDrag");
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
+        Debug.DrawRay(ray.origin, ray.direction, Color.red, 50000);
         if (Physics.Raycast(ray, out hit, Mathf.Infinity))
         {
+            Debug.Log(hit.transform.tag);
+            Debug.Log(hit.transform.position);
             if (hit.transform.tag == "terria")
             {
-                    position = hit.point;
+                Debug.Log("Raycast");
+                log.text = "Raycast";
+                position = hit.point;
                     if (spline == null)
                     {
                         GameObject newSpline = Instantiate(roadGeneretorPrefab, roadGeneretorPrefab.transform.position, Quaternion.identity) as GameObject;

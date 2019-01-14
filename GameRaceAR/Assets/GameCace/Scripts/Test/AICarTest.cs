@@ -25,7 +25,7 @@ public class AICarTest : MonoBehaviour {
     public Vector3 nextPosition;
     public float distance;
     public float distanceStop = 1f;
-    public float f;
+    public float Checkdistance;
     WheelFrictionCurve fFrictionL;
     WheelFrictionCurve sFrictionL;
     WheelFrictionCurve fFrictionR;
@@ -69,18 +69,10 @@ public class AICarTest : MonoBehaviour {
 
         UpdateWheelPoses();
 
-        //if (CheckState())
-        //{
-        //    _navMeshAgent.SetDestination(GetNext());
-
-        //}
-
-        //GetSteer(_navMeshAgent.nextPosition);
     }
     public void CheckPath()
     {
-        // Vector3 navtargetVector = = path[currentPathObj].transform.position; 
-        // steerVector = transform.InverseTransformPoint(navtargetVector);
+
         distance = Vector3.Distance(transform.position, steerVector);
         if (distance <= distFromPath)
         {
@@ -90,19 +82,19 @@ public class AICarTest : MonoBehaviour {
         }
         steerVector = path[currentPathObj].transform.position;
     }
-    // kiểm tra path tiếp theo để xe biết góc quay
+   
     void GetSteer()
     {
 
         // Vector3 steerVector = transform.InverseTransformPoint(new Vector3(_navMeshAgent.nextPosition.x, transform.position.y, _navMeshAgent.nextPosition.z));
 
-        f = Vector3.Distance(_navMeshAgent.nextPosition, transform.position);
+        Checkdistance = Vector3.Distance(_navMeshAgent.nextPosition, transform.position);
         _navMeshAgent.SetDestination(steerVector);
         fFrictionL = wheelRL.forwardFriction;
         sFrictionL = wheelRL.sidewaysFriction;
         fFrictionR = wheelRR.forwardFriction;
         sFrictionR = wheelRR.sidewaysFriction;
-        if (f < distanceStop)
+        if (Checkdistance < distanceStop)
         {
             
             fFrictionL.stiffness = 0.01f;
@@ -114,9 +106,9 @@ public class AICarTest : MonoBehaviour {
             
             fFrictionR.stiffness = 0.01f;
             sFrictionR.stiffness = 0.01f;
-            Debug.Log(sFrictionR.stiffness);
+           
             wheelRR.forwardFriction = fFrictionR;
-            Debug.Log(wheelRR.forwardFriction.stiffness);
+           
             
             wheelRR.sidewaysFriction = sFrictionR;
         }
@@ -193,6 +185,9 @@ public class AICarTest : MonoBehaviour {
     void Move()
     {
         currentSpeed = 2 * 22 / 7 * wheelRL.radius * wheelRL.rpm * 60 / 1000;
+
+        Debug.Log(wheelRL.radius + " wheelRL.radius");
+        Debug.Log(wheelRL.rpm + " wheelRL.rpm");
         currentSpeed = Mathf.Round(currentSpeed);
         if (currentSpeed <= topSpeed)
         {

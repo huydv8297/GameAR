@@ -7,13 +7,10 @@ using UnityEngine.UI;
 public class CarTest : MonoBehaviour {
     [SerializeField]
     private float speed = 1f;
-    [SerializeField]
-    private float upSpeed = 2f;
-    [SerializeField]
-    private float maxSpeed = 10f;
+    public WheelCollider wheelFL, wheelFR, wheelRL, wheelRR;
 
     private Rigidbody rb;
-    public Text textI, textt;
+    public Text textH, textV;
     
 
 
@@ -52,6 +49,8 @@ public class CarTest : MonoBehaviour {
             Gyroscope gyro = Input.gyro;
             moveHorizontal = gyro.gravity.x;
             moveVertical = gyro.gravity.y;
+            textH.text = "moveHorizontal: " + moveHorizontal.ToString();
+            textV.text = "moveVertical: " + moveVertical.ToString();
         }
         else
         {
