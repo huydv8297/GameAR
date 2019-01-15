@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-
+using GoogleARCore;
 public class RoadManager : MonoBehaviour
 {
     public Spline spline;
@@ -19,6 +19,11 @@ public class RoadManager : MonoBehaviour
     public TerrianController terrianController;
     public GameObject bridgeGO;
     public Toggle road, bridge, river, roadLine, roadHight;
+    public GameObject searchPanel;
+
+
+    private List<DetectedPlane> m_AllPlanes = new List<DetectedPlane>();
+    private bool m_IsQuitting = false;
 
 
     void Awake()
@@ -29,7 +34,24 @@ public class RoadManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-    
+
+        _UpdateApplicationLifecycle();
+
+        // Hide snackbar when currently tracking at least one plane.
+        // 
+        Session.GetTrackables<DetectedPlane>(m_AllPlanes);
+        bool showSearchingUI = true;
+        for (int i = 0; i < m_AllPlanes.Count; i++)
+        {
+            if (m_AllPlanes[i].TrackingState == TrackingState.Tracking)
+            {
+                showSearchingUI = false;
+                break;
+            }
+        }
+
+        searchPanel.SetActive(showSearchingUI);
+
         if (!EventSystem.current.IsPointerOverGameObject() && Input.GetMouseButtonDown(0))
         {
             Debug.Log("KeyDown");
@@ -105,18 +127,31 @@ public class RoadManager : MonoBehaviour
     void CreateRoad()
     {
         Debug.Log("OnDrag");
-        RaycastHit hit;
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+        Touch touch;
+        if ( Input.touchCount < 1 || (touch = Input.GetTouch(0)).phase != TouchPhase.Began)//xác định số lần chạm hoặc không phải ngón tay chạm vào mh
         {
-            if (hit.transform.tag == "terria")
-            {
-                    position = hit.point;
+            return;
+        }
+        TrackableHit hit;
+        TrackableHitFlags raycastFilter = TrackableHitFlags.PlaneWithinPolygon |
+        TrackableHitFlags.FeaturePointWithSurfaceNormal;
+        if(Frame.Raycast(touch.position.x, touch.position.y, raycastFilter, out hit))
+        { 
+        //RaycastHit hit;
+        //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        //if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+        //{
+            Debug.Log(hit.Pose.position);
+
+            //if (hit.transform.tag == "terria")
+            //{
+                    position = hit.Pose.position;
                     if (spline == null)
                     {
                         GameObject newSpline = Instantiate(roadGeneretorPrefab, roadGeneretorPrefab.transform.position, Quaternion.identity) as GameObject;
-                        newSpline.transform.parent = transform;
+                        var anchor = hit.Trackable.CreateAnchor(hit.Pose);
+                        newSpline.transform.parent = anchor.transform;
                         spline = newSpline.GetComponent<Spline>();
                         spline.nodes[0].position = position;
                         spline.nodes[1].position = position;
@@ -146,7 +181,7 @@ public class RoadManager : MonoBehaviour
                             AddNode(_position);
                             Debug.Log("AddNode");
                         }                    
-                    }
+                    //}
                 }
             }
     }
@@ -229,6 +264,74 @@ public class RoadManager : MonoBehaviour
         if (Vector3.Angle(part, furure) < 90)
         {
             spline.RemoveNode(_lastNode);
+        }
+    }
+
+    private void _UpdateApplicationLifecycle()
+    {
+        // Exit the app when the 'back' button is pressed.
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+
+        // Only allow the screen to sleep when not tracking.
+        if (Session.Status != SessionStatus.Tracking)
+        {
+            const int lostTrackingSleepTimeout = 15;
+            Screen.sleepTimeout = lostTrackingSleepTimeout;
+        }
+        else
+        {
+            Screen.sleepTimeout = SleepTimeout.NeverSleep;
+        }
+
+        if (m_IsQuitting)
+        {
+            return;
+        }
+
+        // Quit if ARCore was unable to connect and give Unity some time for the toast to appear.
+        if (Session.Status == SessionStatus.ErrorPermissionNotGranted)
+        {
+            _ShowAndroidToastMessage("Camera permission is needed to run this application.");
+            m_IsQuitting = true;
+            Invoke("_DoQuit", 0.5f);
+        }
+        else if (Session.Status.IsError())
+        {
+            _ShowAndroidToastMessage("ARCore encountered a problem connecting.  Please start the app again.");
+            m_IsQuitting = true;
+            Invoke("_DoQuit", 0.5f);
+        }
+    }
+
+    /// <summary>
+    /// Actually quit the application.
+    /// </summary>
+    private void _DoQuit()
+    {
+        Application.Quit();
+    }
+
+    /// <summary>
+    /// Show an Android toast message.
+    /// </summary>
+    /// <param name="message">Message string to show in the toast.</param>
+    private void _ShowAndroidToastMessage(string message)
+    {
+        AndroidJavaClass unityPlayer = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
+        AndroidJavaObject unityActivity = unityPlayer.GetStatic<AndroidJavaObject>("currentActivity");
+
+        if (unityActivity != null)
+        {
+            AndroidJavaClass toastClass = new AndroidJavaClass("android.widget.Toast");
+            unityActivity.Call("runOnUiThread", new AndroidJavaRunnable(() =>
+            {
+                AndroidJavaObject toastObject = toastClass.CallStatic<AndroidJavaObject>("makeText", unityActivity,
+                    message, 0);
+                toastObject.Call("show");
+            }));
         }
     }
 }
