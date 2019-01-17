@@ -68,6 +68,7 @@ public class ExempleRailling : MonoBehaviour {
             //go.hideFlags = HideFlags.NotEditable;
 
             go.GetComponent<MeshRenderer>().material = material;
+            go.AddComponent<NavMeshSourceTag>();
             MeshBender mb = go.GetComponent<MeshBender>();
             mb.SetSourceMesh(mesh, false);
             mb.SetRotation(Quaternion.Euler(rotation), false);

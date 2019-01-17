@@ -28,18 +28,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1408063690866874
+--- !u!1 &1654791170421466
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4482088144688918}
-  - component: {fileID: 33702019808474238}
-  - component: {fileID: 23893423287477718}
-  - component: {fileID: 114777766838787086}
-  - component: {fileID: 64877174649752900}
+  - component: {fileID: 4951290710826326}
+  - component: {fileID: 33829122652444108}
+  - component: {fileID: 23109970055163584}
+  - component: {fileID: 114657712418269048}
+  - component: {fileID: 64021859204506450}
+  - component: {fileID: 114727262051173150}
   m_Layer: 0
   m_Name: SplineMesh0
   m_TagString: Untagged
@@ -54,19 +55,19 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1362322658431260}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.2, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4482088144688918}
+  - {fileID: 4951290710826326}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4482088144688918
+--- !u!4 &4951290710826326
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1408063690866874}
+  m_GameObject: {fileID: 1654791170421466}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -74,12 +75,12 @@ Transform:
   m_Father: {fileID: 4232916396027898}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23893423287477718
+--- !u!23 &23109970055163584
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1408063690866874}
+  m_GameObject: {fileID: 1654791170421466}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -89,7 +90,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: f182e2714eb8a714a99ed091081ce16c, type: 2}
+  - {fileID: 2100000, guid: 47390f6bc8cfbde4fb24f5fbb333d7d2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -109,19 +110,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33702019808474238
+--- !u!33 &33829122652444108
 MeshFilter:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1408063690866874}
+  m_GameObject: {fileID: 1654791170421466}
   m_Mesh: {fileID: 0}
---- !u!64 &64877174649752900
+--- !u!64 &64021859204506450
 MeshCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1408063690866874}
+  m_GameObject: {fileID: 1654791170421466}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
@@ -142,15 +143,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nodes:
-  - position: {x: 5, y: 0, z: 0}
-    direction: {x: 5, y: 0, z: -3}
+  - position: {x: -0.011447191, y: 0, z: 0}
+    direction: {x: 0.17099515, y: 0, z: -0.024576902}
     Changed:
       m_PersistentCalls:
         m_Calls: []
       m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-  - position: {x: 10, y: 0, z: 0}
-    direction: {x: 10, y: 0, z: 3}
+  - position: {x: 0.45079088, y: 0, z: 0}
+    direction: {x: 0.5480968, y: 0, z: -0.025191545}
     Changed:
       m_PersistentCalls:
         m_Calls: []
@@ -158,16 +159,16 @@ MonoBehaviour:
         Culture=neutral, PublicKeyToken=null
   curves:
   - n1:
-      position: {x: 5, y: 0, z: 0}
-      direction: {x: 5, y: 0, z: -3}
+      position: {x: -0.011447191, y: 0, z: 0}
+      direction: {x: 0.17099515, y: 0, z: -0.024576902}
       Changed:
         m_PersistentCalls:
           m_Calls: []
         m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
     n2:
-      position: {x: 10, y: 0, z: 0}
-      direction: {x: 10, y: 0, z: 3}
+      position: {x: 0.45079088, y: 0, z: 0}
+      direction: {x: 0.5480968, y: 0, z: -0.025191545}
       Changed:
         m_PersistentCalls:
           m_Calls: []
@@ -178,7 +179,7 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-  Length: 7.5348897
+  Length: 0.46353707
   NodeCountChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -205,16 +206,16 @@ MonoBehaviour:
   rotation: {x: 0, y: 0, z: 0}
   YOffset: 0
   ZOffset: 0
-  scale: 0.5
+  scale: 0.03
   meshScale: {x: 1, y: 1, z: 1}
   meshes:
-  - {fileID: 1408063690866874}
---- !u!114 &114777766838787086
+  - {fileID: 1654791170421466}
+--- !u!114 &114657712418269048
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1408063690866874}
+  m_GameObject: {fileID: 1654791170421466}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f8cda9ed2ad6a8b4781166236afc26b3, type: 3}
@@ -222,16 +223,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   curve:
     n1:
-      position: {x: 45.86197, y: 20.59061, z: 60.066376}
-      direction: {x: 45.29909, y: 20.59061, z: 61.72241}
+      position: {x: -0.011447191, y: 0, z: 0}
+      direction: {x: 0.17099515, y: 0, z: -0.024576902}
       Changed:
         m_PersistentCalls:
           m_Calls: []
         m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
     n2:
-      position: {x: 44.3374, y: 20.507248, z: 64.63448}
-      direction: {x: 43.659, y: 20.507248, z: 66.94466}
+      position: {x: 0.45079088, y: 0, z: 0}
+      direction: {x: 0.5480968, y: 0, z: -0.025191545}
       Changed:
         m_PersistentCalls:
           m_Calls: []
@@ -242,3 +243,14 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
+--- !u!114 &114727262051173150
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1654791170421466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e038bf700cfa444fb16c6ef963be9f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

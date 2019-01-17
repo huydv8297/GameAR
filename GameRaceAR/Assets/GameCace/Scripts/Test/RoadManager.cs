@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using GoogleARCore;
+using GoogleARCore.Examples.HelloAR;
 public class RoadManager : MonoBehaviour
 {
     public Spline spline;
@@ -16,19 +17,21 @@ public class RoadManager : MonoBehaviour
     public Vector3 scale = Vector3.zero;
     public GameObject roadGeneretorPrefab;
     public GameObject bridgeGeneretorPrefab;
-    public TerrianController terrianController;
+    //public TerrianController terrianController;
     public GameObject bridgeGO;
     public Toggle road, bridge, river, roadLine, roadHight;
-    public GameObject searchPanel;
-
-
+    public Text log;
+    private HelloARController helloARController;
+    public TrackableHit hit;
     private List<DetectedPlane> m_AllPlanes = new List<DetectedPlane>();
     private bool m_IsQuitting = false;
 
 
     void Awake()
     {
-        terrianController = GetComponent<TerrianController>();
+        //terrianController = GetComponent<TerrianController>();
+        helloARController = GetComponent<HelloARController>();
+
     }
 
     // Update is called once per frame
@@ -40,17 +43,6 @@ public class RoadManager : MonoBehaviour
         // Hide snackbar when currently tracking at least one plane.
         // 
         Session.GetTrackables<DetectedPlane>(m_AllPlanes);
-        bool showSearchingUI = true;
-        for (int i = 0; i < m_AllPlanes.Count; i++)
-        {
-            if (m_AllPlanes[i].TrackingState == TrackingState.Tracking)
-            {
-                showSearchingUI = false;
-                break;
-            }
-        }
-
-        searchPanel.SetActive(showSearchingUI);
 
         if (!EventSystem.current.IsPointerOverGameObject() && Input.GetMouseButtonDown(0))
         {
@@ -65,16 +57,14 @@ public class RoadManager : MonoBehaviour
             Debug.Log("KeyUp");
             
 
-            if(river.isOn && spline != null)
-            {
-                foreach (var node in spline.nodes)
-                {
-                    terrianController.Dig(node.position);
-                }
-                spline.gameObject.SetActive(false);
-            }
-
-            
+            //if(river.isOn && spline != null)
+            //{
+            //    foreach (var node in spline.nodes)
+            //    {
+            //        terrianController.Dig(node.position);
+            //    }
+            //    spline.gameObject.SetActive(false);
+            //}
             if (spline != null)
             {
                 if (roadHight.isOn || roadLine.isOn)
@@ -93,9 +83,8 @@ public class RoadManager : MonoBehaviour
         }
 
 
-        if (isCreate)
+        if (isCreate && !helloARController.showSearchingUI)
             OnMouseDrag();
-
 
     }
 
@@ -127,15 +116,14 @@ public class RoadManager : MonoBehaviour
     void CreateRoad()
     {
         Debug.Log("OnDrag");
-        Touch touch;
-        if ( Input.touchCount < 1 || (touch = Input.GetTouch(0)).phase != TouchPhase.Began)//xác định số lần chạm hoặc không phải ngón tay chạm vào mh
-        {
-            return;
-        }
-        TrackableHit hit;
+        //if (Input.touchCount < 1 || (touch = Input.GetTouch(0)).phase != TouchPhase.Began)//xác định số lần chạm hoặc không phải ngón tay chạm vào mh
+        //{
+        //    return;
+        //}
+        Vector3 mousePosition = Input.mousePosition;
         TrackableHitFlags raycastFilter = TrackableHitFlags.PlaneWithinPolygon |
         TrackableHitFlags.FeaturePointWithSurfaceNormal;
-        if(Frame.Raycast(touch.position.x, touch.position.y, raycastFilter, out hit))
+        if(Frame.Raycast(mousePosition.x, mousePosition.y, raycastFilter, out hit))
         { 
         //RaycastHit hit;
         //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -145,13 +133,14 @@ public class RoadManager : MonoBehaviour
             Debug.Log(hit.Pose.position);
 
             //if (hit.transform.tag == "terria")
-            //{
-                    position = hit.Pose.position;
+            //{     
+                    log.text = "Raycast";
                     if (spline == null)
                     {
-                        GameObject newSpline = Instantiate(roadGeneretorPrefab, roadGeneretorPrefab.transform.position, Quaternion.identity) as GameObject;
+                        GameObject newSpline = Instantiate(roadGeneretorPrefab, hit.Pose.position, hit.Pose.rotation) as GameObject;
                         var anchor = hit.Trackable.CreateAnchor(hit.Pose);
                         newSpline.transform.parent = anchor.transform;
+
                         spline = newSpline.GetComponent<Spline>();
                         spline.nodes[0].position = position;
                         spline.nodes[1].position = position;
@@ -179,7 +168,8 @@ public class RoadManager : MonoBehaviour
                             }
 
                             AddNode(_position);
-                            Debug.Log("AddNode");
+                    log.text = "Addnote";
+                    Debug.Log("AddNode");
                         }                    
                     //}
                 }
