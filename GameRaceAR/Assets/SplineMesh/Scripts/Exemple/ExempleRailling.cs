@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.AI;
 /// <summary>
 /// Exemple of component to bend a mesh along a spline with an offset.
 /// 

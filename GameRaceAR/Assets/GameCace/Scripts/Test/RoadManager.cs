@@ -5,7 +5,6 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using GoogleARCore;
-using GoogleARCore.Examples.HelloAR;
 public class RoadManager : MonoBehaviour
 {
     public Spline spline;
@@ -17,28 +16,28 @@ public class RoadManager : MonoBehaviour
     public Vector3 scale = Vector3.zero;
     public GameObject roadGeneretorPrefab;
     public GameObject bridgeGeneretorPrefab;
-    //public TerrianController terrianController;
+    public TerrianController terrianController;
     public GameObject bridgeGO;
     public Toggle road, bridge, river, roadLine, roadHight;
+    public float heightRoad = 0f;
     public Text log;
-    private HelloARController helloARController;
-    public TrackableHit hit;
+
     private List<DetectedPlane> m_AllPlanes = new List<DetectedPlane>();
     private bool m_IsQuitting = false;
 
 
     void Awake()
     {
-        //terrianController = GetComponent<TerrianController>();
-        helloARController = GetComponent<HelloARController>();
-
+        terrianController = GetComponent<TerrianController>();
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        _UpdateApplicationLifecycle();
+        if (Session.Status != SessionStatus.Tracking)
+        {
+            return;
+        }
 
         // Hide snackbar when currently tracking at least one plane.
         // 
@@ -47,8 +46,8 @@ public class RoadManager : MonoBehaviour
         if (!EventSystem.current.IsPointerOverGameObject() && Input.GetMouseButtonDown(0))
         {
             Debug.Log("KeyDown");
-            if (roadLine.isOn || roadHight.isOn)
-                isRoadLine = false;
+            //if (roadLine.isOn || roadHight.isOn)
+            //    isRoadLine = false;
             isCreate = true;
         }
 
@@ -65,26 +64,30 @@ public class RoadManager : MonoBehaviour
             //    }
             //    spline.gameObject.SetActive(false);
             //}
-            if (spline != null)
-            {
-                if (roadHight.isOn || roadLine.isOn)
-                {
-                    
-                    isRoadLine = true;
-                    OnMouseDrag();
-                }
 
-                Invoke("SetTag", 0.5f);
+            
+            //if (spline != null)
+            //{
+            //    if (roadHight.isOn || roadLine.isOn)
+            //    {
+                    
+            //        isRoadLine = true;
+            //        OnMouseDrag();
+            //    }
+
+            //    Invoke("SetTag", 0.5f);
                 
-            }
-                
+            //}
+
+            spline = null;
             bridgeGO = null;
             isCreate = false;
         }
 
 
-        if (isCreate && !helloARController.showSearchingUI)
+        if (isCreate)
             OnMouseDrag();
+
 
     }
 
@@ -96,10 +99,10 @@ public class RoadManager : MonoBehaviour
     {
         if(road.isOn || roadLine.isOn || roadHight.isOn)
             CreateRoad();
-        if (bridge.isOn)
-            CreateBridge();
-        if (river.isOn)
-            CreateRiver();
+        //if (bridge.isOn)
+        //    CreateBridge();
+        //if (river.isOn)
+        //    CreateRiver();
     }
 
     void SetTag()
@@ -116,61 +119,71 @@ public class RoadManager : MonoBehaviour
     void CreateRoad()
     {
         Debug.Log("OnDrag");
-        //if (Input.touchCount < 1 || (touch = Input.GetTouch(0)).phase != TouchPhase.Began)//xác định số lần chạm hoặc không phải ngón tay chạm vào mh
+        //Touch touch;
+        //if ( Input.touchCount < 1 || (touch = Input.GetTouch(0)).phase != TouchPhase.Began)//xác định số lần chạm hoặc không phải ngón tay chạm vào mh
         //{
         //    return;
         //}
-        Vector3 mousePosition = Input.mousePosition;
+        TrackableHit hit;
         TrackableHitFlags raycastFilter = TrackableHitFlags.PlaneWithinPolygon |
         TrackableHitFlags.FeaturePointWithSurfaceNormal;
-        if(Frame.Raycast(mousePosition.x, mousePosition.y, raycastFilter, out hit))
+        log.text = "Before raycast";
+        if(Frame.Raycast(Input.mousePosition.x, Input.mousePosition.y, raycastFilter, out hit))
         { 
         //RaycastHit hit;
         //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
         //if (Physics.Raycast(ray, out hit, Mathf.Infinity))
         //{
-            Debug.Log(hit.Pose.position);
+                Debug.Log(hit.Pose.position);
 
             //if (hit.transform.tag == "terria")
-            //{     
-                    log.text = "Raycast";
+            //{
+                    position = hit.Pose.position;
+                    log.text = "" + position;
+                    position.y = 0;
+
                     if (spline == null)
                     {
-                        GameObject newSpline = Instantiate(roadGeneretorPrefab, hit.Pose.position, hit.Pose.rotation) as GameObject;
+                        GameObject newSpline = Instantiate(roadGeneretorPrefab, Vector3.zero, Quaternion.identity) as GameObject;
                         var anchor = hit.Trackable.CreateAnchor(hit.Pose);
+                        anchor.transform.parent = Container.Instance.transform;
                         newSpline.transform.parent = anchor.transform;
-
                         spline = newSpline.GetComponent<Spline>();
-                        spline.nodes[0].position = position;
-                        spline.nodes[1].position = position;
-                        Vector3 firstDirection = GetPoint(spline.nodes[0].position, spline.nodes[1].position, 0.5f);
-                        spline.nodes[0].direction = firstDirection;
-                        spline.nodes[1].direction = firstDirection;
+                        //spline.nodes[0].position = position;
+                        //spline.nodes[1].position = position;
+                        //Vector3 firstDirection = GetPoint(spline.nodes[0].position, spline.nodes[1].position, 0.5f);
+                        //spline.nodes[0].direction = firstDirection;
+                        //spline.nodes[1].direction = firstDirection;
                     }
-                    else if(isRoadLine)
+                    else
                     {
                         lastNode = spline.nodes.LastOrDefault();
+                        lastNode.position.y = 0;
                         float distance = Vector3.Distance(lastNode.position, position);
+                        Debug.Log("Distance: " + distance);
                         if (distance < space)
                             return;
-
-                        float count = distance / space;
-                        Vector3 between = GetPoint(lastNode.position, position, 0.5f);
-                        int midpoint = (int)count / 2;
-                        for (float i = 1; i < count; i++)
+                        else
                         {
-                            Vector3 _position = GetPoint(lastNode.position, position, i / count);
-                            if(roadHight.isOn)
+                            float count = distance / space;
+                            //Vector3 between = GetPoint(lastNode.position, position, 0.5f);
+                            //int midpoint = (int)count / 2;
+                            for (float i = 1; i < count; i++)
                             {
-                                Vector3 _position2 = GetPoint(lastNode.position, position, i / count);
-                                
-                            }
+                                Vector3 _position = GetPoint(position, lastNode.position, i / count);
+                                //if(roadHight.isOn)
+                                //{
+                                //    Vector3 _position2 = GetPoint(lastNode.position, position, i / count);
 
-                            AddNode(_position);
-                    log.text = "Addnote";
-                    Debug.Log("AddNode");
-                        }                    
+                                //}
+                                AddNode(_position);
+                                log.text = "AddNode" + i;
+                                Debug.Log("AddNode" + i);
+
+                            }
+                }
+                                        
                     //}
                 }
             }
@@ -220,12 +233,14 @@ public class RoadManager : MonoBehaviour
         
 
         Vector3 _postion = position;
+        _postion.y = 0;
         ////if(_postion.y - spline.nodes[0].position.y > 2f)
         ////    _postion.y += height;
         //_postion.y = _lastNode.position.y;
         Vector3 _direction = _postion;
+        
 
-        _direction.y += (Mathf.Abs(_postion.y) - Mathf.Abs(_lastNode.position.y)) / f;
+        //_direction.y += (Mathf.Abs(_postion.y) - Mathf.Abs(_lastNode.position.y)) / f;
         _direction.z += (Mathf.Abs(_postion.z) - Mathf.Abs(_lastNode.position.z)) / f;
         _direction.x += (Mathf.Abs(_postion.x) - Mathf.Abs(_lastNode.position.x)) / f;
         SplineNode _node = new SplineNode(_postion, _direction);
