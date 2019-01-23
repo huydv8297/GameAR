@@ -29,10 +29,11 @@ public class InstanceSkybox : MonoBehaviour
                 {
                     var anchor = hit.Trackable.CreateAnchor(hit.Pose);
                     anchor.transform.parent = Container.Instance.transform;
-                    GameObject box = Instantiate(skyboxPrefab, hit.Pose.position - new Vector3(0,  5, 0), Quaternion.identity, anchor.transform) as GameObject;
-                    box.transform.parent = anchor.transform;
-                    
-                    text.text = "instance skybox" + box.transform.position;
+                    //GameObject box = Instantiate(skyboxPrefab, hit.Pose.position - new Vector3(0, 5, 0), Quaternion.identity, anchor.transform) as GameObject;
+                    skyboxPrefab.transform.parent = anchor.transform;
+                    skyboxPrefab.transform.localPosition = Vector3.zero;
+                    skyboxPrefab.SetActive(true);
+                    text.text = "instance skybox" + skyboxPrefab.transform.position;
                     isInstance = true;
                 }
 

@@ -292,9 +292,9 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1973458113075394}
-  m_LocalRotation: {x: 0.0000012876537, y: -0.018325506, z: -0.000005277667, w: 0.99983215}
-  m_LocalPosition: {x: 37.000153, y: 20.1546, z: 69.00001}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalRotation: {x: -0, y: -0.7128833, z: -0, w: 0.7012827}
+  m_LocalPosition: {x: -2.78, y: 0, z: 2.09}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_Children:
   - {fileID: 4662308823114372}
   - {fileID: 4798582971295070}
@@ -302,7 +302,7 @@ Transform:
   - {fileID: 4126844659958228}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90.94, z: 0}
 --- !u!4 &4505224150776848
 Transform:
   m_ObjectHideFlags: 1
@@ -902,9 +902,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
-  rotationSpeed: 30
-  horizontalSpeed: 2
-  verticalSpeed: 2
+  turnSpeed: 5
+  hoverForce: 65
+  hoverHeight: 3.5
+  powerInput: 0
+  turnInput: 0
 --- !u!146 &146100704233168664
 WheelCollider:
   m_ObjectHideFlags: 1
