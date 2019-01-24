@@ -1,87 +1,63 @@
-﻿using System.Collections;
+﻿using GoogleARCore;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Flag : MonoBehaviour {
 
 	public List<GameObject> flags = new List<GameObject>();
-    public GameObject prefab;
-    public RoadManager roadManager;
-    public List<SplineNode> nodes = new List<SplineNode>();
-    public bool isMoveable;
-    public GameObject flag;
+    public GameObject flagPrefab;
+    public GameObject curentFlag;
 
-    public void AddFlag()
+    public bool isCreate;
+
+    private void Update()
     {
-        flag = Instantiate(prefab, nodes[1].position, Quaternion.identity);
-        flags.Add(flag);
-    }
 
-	void Start () {
-        nodes = roadManager.spline.nodes;
-    }
+        if (!isCreate)
+            return;
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.C))
+        if(Input.GetKeyDown(KeyCode.A))
         {
-            isMoveable = true;
+            flags.Add(curentFlag);
+            curentFlag = null;
+        }
+
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            curentFlag = null;
+        }
+
+        RaycastHit hit;
+        Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+        {
+            Debug.Log("flag");
             
-                
-
-        }
-
-        if (Input.GetKeyUp(KeyCode.C))
-        {
-            isMoveable = false;
-            if (flags.Count > 1)
+            Debug.DrawRay(ray.origin , ray.direction * Mathf.Infinity, Color.red, Mathf.Infinity);
+            if(curentFlag == null)
             {
-                Debug.DrawLine(flags[flags.IndexOf(flag) - 1].transform.position, flag.transform.position, Color.blue, Mathf.Infinity);
-            }
-        }
-
-        if (isMoveable)
-        {
-            RaycastHit hit;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+                curentFlag = Instantiate(flagPrefab, transform);
+     
+            }else
             {
-                if (hit.transform.tag == "terria")
-                {
-                    flag.transform.position = FindMinDistance(hit.point);
-                }
+                Vector3 newPos = hit.point;
+                newPos.y += 1f;
+                curentFlag.transform.position = newPos;
             }
 
-            if (flags.Count > 1)
+            if(hit.transform.CompareTag("road"))
             {
-                Debug.DrawLine(flags[flags.IndexOf(flag) - 1].transform.position, flag.transform.position, Color.blue);
+                curentFlag.GetComponent<CheckArea>().SetGreenStatus();
             }
-        }
-    }
-
-    Vector3 FindMinDistance(Vector3 point)
-    {
-        float min = Vector3.Distance(point, nodes[0].position);
-        Vector3 minNode = Vector3.zero;
-        foreach(var node in nodes)
-        {
-            if (min > Vector3.Distance(point, node.position))
+            else if (hit.transform.CompareTag("terria"))
             {
-                min = Vector3.Distance(point, node.position);
-                minNode = node.position;
+                curentFlag.GetComponent<CheckArea>().SetRedStatus();
             }
-        }
-        return minNode;
-    }
 
-    void DrawLine()
-    {
-        for(int i = 1; i < nodes.Count; i++)
-        {
-            Debug.DrawLine(nodes[i-1].position, nodes[i].position);
+            
         }
+            
     }
 
 }

@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - terria
+  - road
+  - wall
   layers:
   - Default
   - TransparentFX

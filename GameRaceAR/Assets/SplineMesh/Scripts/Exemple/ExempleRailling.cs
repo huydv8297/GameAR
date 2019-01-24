@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.AI;
 /// <summary>
 /// Exemple of component to bend a mesh along a spline with an offset.
 /// 
@@ -68,14 +68,17 @@ public class ExempleRailling : MonoBehaviour {
             //go.hideFlags = HideFlags.NotEditable;
 
             go.GetComponent<MeshRenderer>().material = material;
+            
             MeshBender mb = go.GetComponent<MeshBender>();
             mb.SetSourceMesh(mesh, false);
+            go.AddComponent<NavMeshSourceTag>();
             mb.SetRotation(Quaternion.Euler(rotation), false);
             mb.SetTranslation(new Vector3(0, YOffset, ZOffset), false);
             mb.SetCurve(curve, false);
             mb.SetStartScale(scale, false);
             mb.SetEndScale(scale);
             meshes.Add(go);
+
         }
     }
 }
