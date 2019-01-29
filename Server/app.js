@@ -21,14 +21,14 @@ function getNewRoomId(){
 }
 
 
-function Response(responeCode,socket, msg = null)
+function Response(responeCode,socket, roomId = null, msg = null)
 {	
 	
-	console.log(responeCode + msg);
-	if(responeCode === 'OnJoinedRoom')
+	
+	if(responeCode != 'OnCreatedRoom')
 	{
-		console.log("Start...");
-		io.to(msg).emit('Response', {
+		
+		io.to(roomId).emit('Response', {
 			code: responeCode,
 			id: socket.userId,
 			msg: msg
@@ -36,12 +36,16 @@ function Response(responeCode,socket, msg = null)
 		
 	}else
 	{
+		
 		socket.emit('Response', {
 			code: responeCode,
 			id: socket.userId,
 			msg: msg
 		});
+		
 	}
+	
+	console.log(responeCode + msg);
 }
 
 
@@ -66,30 +70,34 @@ io.on('connection', function(socket){
 			//Chat
 			case 'Chat':
 				console.log('message from user#' + socket.userId + ": " + data.msg);
-				Response('Chat', socket, data.msg);
+				Response('Chat', socket, null, data.msg);
 				break;
 			//Create Room	
 			case 'CreateRoom':
 				var roomId = getNewRoomId();
 				socket.join(roomId, function(){});
 				console.log('User' + socket.userId + ' create room id : ' + roomId);
-				Response('OnCreatedRoom', socket, roomId);
+				Response('OnCreatedRoom', socket, roomId, roomId);
 				break;
 			//Join Room	
 			case 'JoinRoom':
 				if(!isExistRoom(data.msg)){
-					Response('Error', socket, 'cant join room');
+					Response('Error', socket, null, 'cant join room');
 				}
 				else{
 					if(io.sockets.adapter.rooms[data.msg].length < 2)
 					{
 						socket.join(data.msg, function(){});
 						console.log('User' + socket.userId + ' join room id : ' + data.msg);
-						Response('OnJoinedRoom', socket, data.msg);
+						Response('OnJoinedRoom', socket, data.msg, data.msg);
 					}else{
-						Response('Error', socket, ' full');
+						Response('Error', socket, null,' full');
 					}
 				}
+				break;
+			case 'Move':
+				console.log('message from user#' + socket.userId + ": " + data.msg);
+				Response('OnMove', socket,data.id, data.msg);
 				break;
 			default:
 				
@@ -99,7 +107,7 @@ io.on('connection', function(socket){
 
 	//disconnect
 	socket.on('disconnect', function () {
-		console.log('A user disconnected');
+		console.log('User ' + socket.userId + ' disconnected');
 	});
 });
 
