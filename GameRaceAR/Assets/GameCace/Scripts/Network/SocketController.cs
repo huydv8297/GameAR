@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using Quobject.SocketIoClientDotNet.Client;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System;
 
 public class Data
 {
@@ -17,6 +18,9 @@ public class Data
         id = _id;
         msg = _msg;
     }
+
+    public Data()
+    { }
 
     public override string ToString()
     {
@@ -34,6 +38,7 @@ public static class Request
     public const string Chat = "Chat";
     public const string SelectScreenType = "CreateRoom";
     public const string SelectRemoteType = "JoinRoom";
+    public const string Move = "Move";
 }
 
 public static class Response
@@ -41,6 +46,7 @@ public static class Response
     public const string Chat = "Chat";
     public const string OnCreatedRoom = "OnCreatedRoom";
     public const string OnJoinedRoom = "OnJoinedRoom";
+    public const string OnMove = "OnMove";
     public const string Error = "Error";
 }
 
@@ -50,7 +56,6 @@ public class SocketClient
     public string id;
     public Type type;
     public string roomId;
-
 }
 
 
@@ -60,8 +65,7 @@ public class SocketController : MonoBehaviour
     public static SocketController Instance;
     public InputField uiInput = null;
     public Text uiChatLog = null;
-    public SocketClient socketClient = new SocketClient();
-
+    public SocketClient socketClient;
     public GameObject screenPanel;
     public GameObject remotePanel;
     public GameObject selectPanel;
@@ -69,11 +73,16 @@ public class SocketController : MonoBehaviour
     protected Socket socket = null;
     protected List<string> chatLog = new List<string>();
     public Text screenText;
+    public GameObject test;
+    public string roomId;
+    public static Action<Data> OnMove = delegate { };
+
 
     private void Awake()
     {
         if (Instance == null)
             Instance = this;
+        socketClient = new SocketClient();
     }
 
     void Destroy()
@@ -101,6 +110,7 @@ public class SocketController : MonoBehaviour
                 screenText.text = socketClient.roomId;
                 break;
             case Response.OnJoinedRoom:
+
                 break;
             default:
                 break;
@@ -159,6 +169,7 @@ public class SocketController : MonoBehaviour
         {
             socket.Emit("Request", JObject.FromObject(data));
         }
+
     }
 
     public void GetRespone()
@@ -191,7 +202,13 @@ public class SocketController : MonoBehaviour
                     socketClient.type = Type.Remote;
                     socketClient.id = responsetData.id;
                     socketClient.roomId = responsetData.msg;
+                    roomId = responsetData.msg;
                     state = Response.OnJoinedRoom;
+                    Debug.Log(roomId);
+                    break;
+                case Response.OnMove:
+                    Debug.Log("OnMove");
+                    OnMove(responsetData);
                     break;
                 default:
                     break;

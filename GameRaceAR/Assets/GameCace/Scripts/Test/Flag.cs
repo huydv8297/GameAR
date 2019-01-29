@@ -32,7 +32,6 @@ public class Flag : MonoBehaviour {
         Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
         if (Physics.Raycast(ray, out hit, Mathf.Infinity))
         {
-            Debug.Log("flag");
             
             Debug.DrawRay(ray.origin , ray.direction * Mathf.Infinity, Color.red, Mathf.Infinity);
             if(curentFlag == null)
@@ -42,8 +41,7 @@ public class Flag : MonoBehaviour {
             }else
             {
                 Vector3 newPos = hit.point;
-                newPos.y += 1f;
-                curentFlag.transform.position = newPos;
+                curentFlag.transform.position = newPos + new Vector3(0 , 1f ,0);
             }
 
             if(hit.transform.CompareTag("road"))
