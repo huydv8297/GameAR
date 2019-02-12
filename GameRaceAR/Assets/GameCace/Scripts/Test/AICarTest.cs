@@ -30,6 +30,9 @@ public class AICarTest : MonoBehaviour {
     WheelFrictionCurve sFrictionL;
     WheelFrictionCurve fFrictionR;
     WheelFrictionCurve sFrictionR;
+    public InterceptorController interceptor;
+   
+
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
@@ -53,11 +56,14 @@ public class AICarTest : MonoBehaviour {
                 path.Add(path_obj);
 
         }
+
+
     }
     void Update()
     {
-
+        
         MoveSpeedCar();
+        UpdateWheelPoses();
     }
 
     public void MoveSpeedCar()
@@ -67,12 +73,12 @@ public class AICarTest : MonoBehaviour {
         CheckPath();
         GetSteer();
 
-        UpdateWheelPoses();
+        
 
     }
     public void CheckPath()
     {
-
+        
         distance = Vector3.Distance(transform.position, steerVector);
         if (distance <= distFromPath)
         {
@@ -81,8 +87,22 @@ public class AICarTest : MonoBehaviour {
                 currentPathObj = 0;
         }
         steerVector = path[currentPathObj].transform.position;
+
+        if (steerVector == path[currentPathObj].transform.position)
+        {
+            // Debug.Log("steerVector " + steerVector);
+            //StartCoroutine(WaitAndPrint());
+        }
     }
-   
+
+    //private IEnumerator WaitAndPrint()
+    //{
+       
+    //    yield return new WaitForSeconds(5);
+    //    interceptor.checkpath();
+
+    //}
+
     void GetSteer()
     {
 
@@ -134,61 +154,17 @@ public class AICarTest : MonoBehaviour {
 
         wheelFL.steerAngle = newSteer;
         wheelFR.steerAngle = newSteer;
+        Debug.Log(newSteer);
 
-        //if (newSteer >= 1 || newSteer <= -1)
-        //{
-
-        //    maxTorque = 80f;
-        //    Debug.Log("newSteer: " + newSteer + "currentSpeed: " + currentSpeed);
-        //    WheelFrictionCurve fFrictionL = wheelRL.forwardFriction;
-        //    WheelFrictionCurve sFrictionL = wheelRL.sidewaysFriction;
-        //    fFrictionL.stiffness = 0.5f;
-        //    sFrictionL.stiffness = 0.5f;
-
-        //    wheelRL.forwardFriction = fFrictionL;
-        //    wheelRL.sidewaysFriction = sFrictionL;
-
-        //    WheelFrictionCurve fFrictionR = wheelRR.forwardFriction;
-        //    WheelFrictionCurve sFrictionR = wheelRR.sidewaysFriction;
-        //    fFrictionR.stiffness = 0.5f;
-        //    sFrictionR.stiffness = 0.5f;
-
-        //    wheelRR.forwardFriction = fFrictionR;
-        //    wheelRR.sidewaysFriction = sFrictionR;
-
-        //}
-        //else
-        //{
-        //    maxTorque = 120f;
-        //    Debug.Log("newSteer: " + newSteer + "currentSpeed: " + currentSpeed);
-        //    WheelFrictionCurve fFrictionL = wheelRL.forwardFriction;
-        //    WheelFrictionCurve sFrictionL = wheelRL.sidewaysFriction;
-        //    fFrictionL.stiffness = 1f;
-        //    sFrictionL.stiffness = 1f;
-
-        //    wheelRL.forwardFriction = fFrictionL;
-        //    wheelRL.sidewaysFriction = sFrictionL;
-
-        //    WheelFrictionCurve fFrictionR = wheelRR.forwardFriction;
-        //    WheelFrictionCurve sFrictionR = wheelRR.sidewaysFriction;
-        //    fFrictionR.stiffness = 1f;
-        //    sFrictionR.stiffness = 1f;
-
-        //    wheelRR.forwardFriction = fFrictionR;
-        //    wheelRR.sidewaysFriction = sFrictionR;
-        //}
-
-
-
+       
     }
 
     void Move()
     {
         currentSpeed = 2 * 22 / 7 * wheelRL.radius * wheelRL.rpm * 60 / 1000;
 
-        Debug.Log(wheelRL.radius + " wheelRL.radius");
-        Debug.Log(wheelRL.rpm + " wheelRL.rpm");
         currentSpeed = Mathf.Round(currentSpeed);
+        //currentSpeed = Mathf.MoveTowards(currentSpeed, 128, 1 * Time.deltaTime);
         if (currentSpeed <= topSpeed)
         {
             wheelRL.motorTorque = maxTorque;
