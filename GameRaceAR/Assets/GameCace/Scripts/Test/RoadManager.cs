@@ -40,15 +40,7 @@ public class RoadManager : MonoBehaviour
         {
             return;
         }
-        if(Input.GetKeyDown(KeyCode.S))
-        {
-            SaveRoad();
-        }
 
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            LoadData();
-        }
 
         Session.GetTrackables<DetectedPlane>(m_AllPlanes);
 
@@ -286,6 +278,19 @@ public class RoadManager : MonoBehaviour
         {
             string dataAsJson = File.ReadAllText(filePath);
             roadData = JsonUtility.FromJson<RoadData>(dataAsJson);
+
+            GameObject newSpline = Instantiate(roadGeneretorPrefab, Vector3.zero, Quaternion.identity) as GameObject;
+            newSpline.transform.parent = Container.Instance.transform;
+            Spline spline = newSpline.GetComponent<Spline>();
+
+            //spline.nodes[0] = roadData.nodes[0];
+            //spline.nodes[1] = roadData.nodes[1];
+
+            //for (int i = 2; i < roadData.nodes.Length; i++ )
+            //{
+            //    spline.AddNode(roadData.nodes[i]);
+            //}
+
         }
         else
         {
