@@ -60,5 +60,6 @@ public class SplineNode {
     /// Event raised when position or direct changes.
     /// </summary>
     [HideInInspector]
+    [NonSerialized]
     public UnityEvent Changed = new UnityEvent();
 }

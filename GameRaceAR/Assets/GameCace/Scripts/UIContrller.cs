@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class UIContrller : MonoBehaviour {
 
+    public Transform target;
     public float fixedY;
 	void Start () {
         fixedY = transform.position.y;
@@ -11,8 +12,14 @@ public class UIContrller : MonoBehaviour {
 	
 	void Update () {
 
-        Vector3 newPost = transform.position;
-        newPost.y = fixedY;
-        transform.position = newPost;
+        Vector3 newPosition = target.position;
+        newPosition.y = fixedY;
+        transform.position = newPosition;
+
+        Quaternion newRotation = target.rotation;
+        newRotation.x = 0;
+        newRotation.z = 0;
+
+        transform.rotation = newRotation;
     }
 }

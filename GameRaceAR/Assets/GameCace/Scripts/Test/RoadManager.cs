@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using GoogleARCore;
 using System;
+using System.IO;
 
 public class RoadManager : MonoBehaviour
 {
@@ -39,7 +40,15 @@ public class RoadManager : MonoBehaviour
         {
             return;
         }
+        if(Input.GetKeyDown(KeyCode.S))
+        {
+            SaveRoad();
+        }
 
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            LoadData();
+        }
 
         Session.GetTrackables<DetectedPlane>(m_AllPlanes);
 
@@ -253,6 +262,42 @@ public class RoadManager : MonoBehaviour
             spline.RemoveNode(_lastNode);
         }
     }
+
+    public void SaveRoad()
+    {
+        RoadData roadData = new RoadData();
+        roadData.nodes = new SplineNode[spline.nodes.Count];
+        for(int i = 0; i < spline.nodes.Count; i++ )
+        {
+            roadData.nodes[i] = spline.nodes[i];
+        }
+        string dataAsJson = JsonUtility.ToJson(roadData);
+        string filePath = Application.dataPath + gameDataProjectFilePath;
+        File.WriteAllText(filePath, dataAsJson);
+    }
+    public string gameDataProjectFilePath = "/Data/road.json";
+    public RoadData roadData;
+
+    public void LoadData()
+    {
+        string filePath = Application.dataPath + gameDataProjectFilePath;
+
+        if (File.Exists(filePath))
+        {
+            string dataAsJson = File.ReadAllText(filePath);
+            roadData = JsonUtility.FromJson<RoadData>(dataAsJson);
+        }
+        else
+        {
+        }
+
+    }
+}
+
+[Serializable]
+public class RoadData
+{
+    public SplineNode[] nodes;
 }
 
 
