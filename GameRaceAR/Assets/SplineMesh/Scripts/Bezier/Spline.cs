@@ -47,7 +47,7 @@ public class Spline : MonoBehaviour {
     /// <summary>
     /// Clear the nodes and curves, then add two default nodes for the reset spline to be visible in editor.
     /// </summary>
-    private void Awake() {
+    private void Reset() {
         nodes.Clear();
         curves.Clear();
         AddNode(new SplineNode(new Vector3(5, 0, 0), new Vector3(5, 0, -3)));

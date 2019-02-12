@@ -23,7 +23,8 @@ public class SplineNode {
     /// </summary>
     public Vector3 direction;
 
-    public SplineNode(Vector3 position, Vector3 direction) {
+    public SplineNode(Vector3 position, Vector3 direction)
+    {
         SetPosition(position);
         SetDirection(direction);
     }

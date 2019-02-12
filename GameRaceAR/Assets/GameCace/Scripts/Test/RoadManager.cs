@@ -11,6 +11,7 @@ using System.IO;
 public class RoadManager : MonoBehaviour
 {
     public Spline spline;
+    public List<Spline> splines = new List<Spline>();
     public SplineNode lastNode;
     public bool isCreate = false, isRoadLine = true;
     public int f = 10;
@@ -140,6 +141,7 @@ public class RoadManager : MonoBehaviour
 
                 newSpline.transform.parent = Container.Instance.transform;
                 spline = newSpline.GetComponent<Spline>();
+                splines.Add(spline);
                 spline.nodes[0].position = position;
                 spline.nodes[1].position = position;
 
@@ -258,10 +260,12 @@ public class RoadManager : MonoBehaviour
     public void SaveRoad()
     {
         RoadData roadData = new RoadData();
-        roadData.nodes = new SplineNode[spline.nodes.Count];
-        for(int i = 0; i < spline.nodes.Count; i++ )
+        roadData.position = new Vector3[splines[0].nodes.Count];
+        roadData.direction = new Vector3[splines[0].nodes.Count];
+        for (int i = 0; i < spline.nodes.Count; i++ )
         {
-            roadData.nodes[i] = spline.nodes[i];
+            roadData.position[i] = spline.nodes[i].position;
+            roadData.direction[i] = spline.nodes[i].direction;
         }
         string dataAsJson = JsonUtility.ToJson(roadData);
         string filePath = Application.dataPath + gameDataProjectFilePath;
@@ -279,17 +283,21 @@ public class RoadManager : MonoBehaviour
             string dataAsJson = File.ReadAllText(filePath);
             roadData = JsonUtility.FromJson<RoadData>(dataAsJson);
 
-            GameObject newSpline = Instantiate(roadGeneretorPrefab, Vector3.zero, Quaternion.identity) as GameObject;
+            GameObject newSpline = Instantiate(roadGeneretorPrefab, Container.Instance.transform) as GameObject;
             newSpline.transform.parent = Container.Instance.transform;
             Spline spline = newSpline.GetComponent<Spline>();
+            splines.Add(spline);
+            SplineNode node0 = new SplineNode(roadData.position[0], roadData.direction[0]);
+            spline.nodes[0] = node0;
 
-            //spline.nodes[0] = roadData.nodes[0];
-            //spline.nodes[1] = roadData.nodes[1];
+            SplineNode node1 = new SplineNode(roadData.position[1], roadData.direction[1]);
+            spline.nodes[1] = node1;
 
-            //for (int i = 2; i < roadData.nodes.Length; i++ )
-            //{
-            //    spline.AddNode(roadData.nodes[i]);
-            //}
+            for (int i = 2; i < roadData.position.Length; i++)
+            {
+                SplineNode node = new SplineNode(roadData.position[i], roadData.direction[i]);
+                spline.AddNode(node);
+            }
 
         }
         else
@@ -302,7 +310,8 @@ public class RoadManager : MonoBehaviour
 [Serializable]
 public class RoadData
 {
-    public SplineNode[] nodes;
+    public Vector3[] position;
+    public Vector3[] direction;
 }
 
 
