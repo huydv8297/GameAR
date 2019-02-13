@@ -1,0 +1,587 @@
+fileFormatVersion: 2
+guid: 237268e634e9e0a44ac057c80bd66c41
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: 06GrillTuning
+    100002: 09Body
+    100004: 09BottomProtection
+    100006: 09BrakelightLBlack
+    100008: 09BrakelightLStock
+    100010: 09BrakelightRBlack
+    100012: 09BrakelightRStock
+    100014: 09BumperFSport
+    100016: 09BumperFStock
+    100018: 09BumperRSport
+    100020: 09BumperRStock
+    100022: 09Collider
+    100024: 09DoorFL
+    100026: 09DoorFR
+    100028: 09DoorRL
+    100030: 09DoorRR
+    100032: 09FenderFL
+    100034: 09FenderFR
+    100036: 09FenderRL
+    100038: 09FenderRR
+    100040: 09GrillStock
+    100042: 09HeadlightLSport
+    100044: 09HeadlightLStock
+    100046: 09HeadlightRSport
+    100048: 09HeadlightRSport 1
+    100050: 09HoodBadboy
+    100052: 09HoodStock
+    100054: 09MirrorLSport
+    100056: 09MirrorLStock
+    100058: 09MirrorRSport
+    100060: 09MirrorRStock
+    100062: 09MufflerStock
+    100064: 09MufflerTuning
+    100066: 09PoliceFlasher
+    100068: 09RoofRack
+    100070: 09SeatDriver
+    100072: 09SeatPassenger
+    100074: 09SeatRear
+    100076: 09SpoilerDucktail
+    100078: 09SteeringWheel
+    100080: 09StrutBar
+    100082: 09TaxiBar
+    100084: 09TrunkDoor
+    100086: //RootNode
+    400000: 06GrillTuning
+    400002: 09Body
+    400004: 09BottomProtection
+    400006: 09BrakelightLBlack
+    400008: 09BrakelightLStock
+    400010: 09BrakelightRBlack
+    400012: 09BrakelightRStock
+    400014: 09BumperFSport
+    400016: 09BumperFStock
+    400018: 09BumperRSport
+    400020: 09BumperRStock
+    400022: 09Collider
+    400024: 09DoorFL
+    400026: 09DoorFR
+    400028: 09DoorRL
+    400030: 09DoorRR
+    400032: 09FenderFL
+    400034: 09FenderFR
+    400036: 09FenderRL
+    400038: 09FenderRR
+    400040: 09GrillStock
+    400042: 09HeadlightLSport
+    400044: 09HeadlightLStock
+    400046: 09HeadlightRSport
+    400048: 09HeadlightRSport 1
+    400050: 09HoodBadboy
+    400052: 09HoodStock
+    400054: 09MirrorLSport
+    400056: 09MirrorLStock
+    400058: 09MirrorRSport
+    400060: 09MirrorRStock
+    400062: 09MufflerStock
+    400064: 09MufflerTuning
+    400066: 09PoliceFlasher
+    400068: 09RoofRack
+    400070: 09SeatDriver
+    400072: 09SeatPassenger
+    400074: 09SeatRear
+    400076: 09SpoilerDucktail
+    400078: 09SteeringWheel
+    400080: 09StrutBar
+    400082: 09TaxiBar
+    400084: 09TrunkDoor
+    400086: //RootNode
+    2100000: Car_body
+    2100002: PlasticDark
+    2100004: Rubber
+    2100006: PlasticBright
+    2100008: HoodSpace
+    2100010: metalbright
+    2100012: windows
+    2100014: metalDark
+    2100016: 'Material #11845'
+    2100018: 'Material #11861'
+    2100020: 'Material #12248'
+    2100022: 'Material #12264'
+    2100024: 'Material #11877'
+    2100026: 'Material #12005'
+    2100028: 'Material #11893'
+    2100030: 'Material #12107'
+    2100032: glass
+    2100034: Green
+    2100036: 'Material #12095'
+    2100038: 'Material #11781'
+    2100040: 'Material #11943'
+    2100042: 'Material #12069'
+    2100044: 'Material #11669'
+    2100046: 'Material #12082'
+    2100048: 'Material #11783'
+    2100050: 'Material #11967'
+    2100052: 'Material #11780'
+    2100054: 'Material #11782'
+    2100056: 'Material #11931'
+    2100058: AngelEye
+    2100060: 'Material #11955'
+    2100062: 'Material #11907'
+    2100064: No Name
+    2100066: Yellow
+    2100068: 'Material #11821'
+    2100070: 'Material #11808'
+    2100072: 'Material #11833'
+    2100074: Red
+    2100076: Blue
+    2100078: 'Material #11809'
+    2100080: 'Material #11796'
+    2100082: 'Material #11784'
+    2100084: car_body
+    2100086: 'Material #12006'
+    2100088: 'Material #11980'
+    2100090: 'Material #11992'
+    2100092: 'Material #16344'
+    2300000: 06GrillTuning
+    2300002: 09Body
+    2300004: 09BottomProtection
+    2300006: 09BrakelightLBlack
+    2300008: 09BrakelightLStock
+    2300010: 09BrakelightRBlack
+    2300012: 09BrakelightRStock
+    2300014: 09BumperFSport
+    2300016: 09BumperFStock
+    2300018: 09BumperRSport
+    2300020: 09BumperRStock
+    2300022: 09Collider
+    2300024: 09DoorFL
+    2300026: 09DoorFR
+    2300028: 09DoorRL
+    2300030: 09DoorRR
+    2300032: 09FenderFL
+    2300034: 09FenderFR
+    2300036: 09FenderRL
+    2300038: 09FenderRR
+    2300040: 09GrillStock
+    2300042: 09HeadlightLSport
+    2300044: 09HeadlightLStock
+    2300046: 09HeadlightRSport
+    2300048: 09HeadlightRSport 1
+    2300050: 09HoodBadboy
+    2300052: 09HoodStock
+    2300054: 09MirrorLSport
+    2300056: 09MirrorLStock
+    2300058: 09MirrorRSport
+    2300060: 09MirrorRStock
+    2300062: 09MufflerStock
+    2300064: 09MufflerTuning
+    2300066: 09PoliceFlasher
+    2300068: 09RoofRack
+    2300070: 09SeatDriver
+    2300072: 09SeatPassenger
+    2300074: 09SeatRear
+    2300076: 09SpoilerDucktail
+    2300078: 09SteeringWheel
+    2300080: 09StrutBar
+    2300082: 09TaxiBar
+    2300084: 09TrunkDoor
+    3300000: 06GrillTuning
+    3300002: 09Body
+    3300004: 09BottomProtection
+    3300006: 09BrakelightLBlack
+    3300008: 09BrakelightLStock
+    3300010: 09BrakelightRBlack
+    3300012: 09BrakelightRStock
+    3300014: 09BumperFSport
+    3300016: 09BumperFStock
+    3300018: 09BumperRSport
+    3300020: 09BumperRStock
+    3300022: 09Collider
+    3300024: 09DoorFL
+    3300026: 09DoorFR
+    3300028: 09DoorRL
+    3300030: 09DoorRR
+    3300032: 09FenderFL
+    3300034: 09FenderFR
+    3300036: 09FenderRL
+    3300038: 09FenderRR
+    3300040: 09GrillStock
+    3300042: 09HeadlightLSport
+    3300044: 09HeadlightLStock
+    3300046: 09HeadlightRSport
+    3300048: 09HeadlightRSport 1
+    3300050: 09HoodBadboy
+    3300052: 09HoodStock
+    3300054: 09MirrorLSport
+    3300056: 09MirrorLStock
+    3300058: 09MirrorRSport
+    3300060: 09MirrorRStock
+    3300062: 09MufflerStock
+    3300064: 09MufflerTuning
+    3300066: 09PoliceFlasher
+    3300068: 09RoofRack
+    3300070: 09SeatDriver
+    3300072: 09SeatPassenger
+    3300074: 09SeatRear
+    3300076: 09SpoilerDucktail
+    3300078: 09SteeringWheel
+    3300080: 09StrutBar
+    3300082: 09TaxiBar
+    3300084: 09TrunkDoor
+    4300000: 09Body
+    4300002: 09BrakelightLStock
+    4300004: 09BumperRStock
+    4300006: 09HeadlightLStock
+    4300008: 09MirrorLStock
+    4300010: 09BumperFStock
+    4300012: 09MirrorRStock
+    4300014: 09BottomProtection
+    4300016: 09MufflerStock
+    4300018: 09BrakelightRStock
+    4300020: 09MirrorLSport
+    4300022: 09MirrorRSport
+    4300024: 06GrillTuning
+    4300026: 09SpoilerDucktail
+    4300028: 09BrakelightLBlack
+    4300030: 09BrakelightRBlack
+    4300032: 09MufflerTuning
+    4300034: 09HeadlightRSport
+    4300036: 09HeadlightLSport
+    4300038: 09HeadlightRSport
+    4300040: 09Collider
+    4300042: 09StrutBar
+    4300044: 09RoofRack
+    4300046: 09SteeringWheel
+    4300048: 09SeatDriver
+    4300050: 09SeatRear
+    4300052: 09FenderFR
+    4300054: 09FenderFL
+    4300056: 09FenderRR
+    4300058: 09FenderRL
+    4300060: 09SeatPassenger
+    4300062: 09PoliceFlasher
+    4300064: 09DoorFL
+    4300066: 09DoorRL
+    4300068: 09BumperRSport
+    4300070: 09TrunkDoor
+    4300072: 09DoorRR
+    4300074: 09DoorFR
+    4300076: 09HoodStock
+    4300078: 09HoodBadboy
+    4300080: 09TaxiBar
+    4300082: 09BumperFSport
+    4300084: 09GrillStock
+    2186277476908879412: ImportLogs
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: AngelEye
+    second: {fileID: 2100000, guid: 25557d7cf583ffc45bd6c8f813c9eb68, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Blue
+    second: {fileID: 2100000, guid: 824dc3746a60bf94d8cff33e9e88f4c1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Car_body
+    second: {fileID: 2100000, guid: a6eee4a904b73be41840fe8879b643c6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Green
+    second: {fileID: 2100000, guid: b80360451c13dd14ab9e7359c2f9ec67, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: HoodSpace
+    second: {fileID: 2100000, guid: da892dbc725b6fe4eac8a80830a3f95d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #11669'
+    second: {fileID: 2100000, guid: ff328fb0b578abe439d928a547c4d2d6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #11780'
+    second: {fileID: 2100000, guid: 7109de397e5a1674c8bc323db7b3f7a9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #11781'
+    second: {fileID: 2100000, guid: b475e3f4d65fe424b84bd45c5bfc3b9d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #11782'
+    second: {fileID: 2100000, guid: d009bca5ed764df42a055030295dc4e4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #11783'
+    second: {fileID: 2100000, guid: 8eeaa5614ada4b54993f3f22ce1185a4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #11784'
+    second: {fileID: 2100000, guid: 2d4b92f97407f7443b4c00dffb2e31c5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #11796'
+    second: {fileID: 2100000, guid: 458f8644f8eaa6b48a25d8cfe25d335a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #11808'
+    second: {fileID: 2100000, guid: 39a2419e1a3df554f8e3248a7cd199d3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #11809'
+    second: {fileID: 2100000, guid: c86ae850ad0d91347b8d889287222c17, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #11821'
+    second: {fileID: 2100000, guid: 315add26273c2a946b786cb72af49337, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #11833'
+    second: {fileID: 2100000, guid: a37bfe08b91507443afd630639c9ce9a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #11845'
+    second: {fileID: 2100000, guid: 43b9b2464382fa84ba1b0575c96408e2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #11861'
+    second: {fileID: 2100000, guid: 6b81d08774163fd4dbf909b4169beef3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #11877'
+    second: {fileID: 2100000, guid: 7e4e7647901dbd848931fc48ccbaee2d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #11893'
+    second: {fileID: 2100000, guid: 28c3f2f39716d764f89e66926ef7c0a5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #11907'
+    second: {fileID: 2100000, guid: a320ac91a90835644ac88983d2bf8be2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #11931'
+    second: {fileID: 2100000, guid: fc6ce87b8ded5a146918a950397c2ee5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #11943'
+    second: {fileID: 2100000, guid: 9a48d9514fb78e84abf3ac386bf0e9c7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #11955'
+    second: {fileID: 2100000, guid: a696fb58ec3a4c44ea18f87b6dab6fb8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #11967'
+    second: {fileID: 2100000, guid: 20ad7e1299ae12d49885ec308eeb899d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #11980'
+    second: {fileID: 2100000, guid: 657bf6094ea229941952702d28b56d31, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #11992'
+    second: {fileID: 2100000, guid: f740e3958de628a44a1002488df1be82, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #12005'
+    second: {fileID: 2100000, guid: 36b03d949845e5f49ba30a625340b015, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #12006'
+    second: {fileID: 2100000, guid: 7cf33742af3fefd40bd416c084f51cb1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #12069'
+    second: {fileID: 2100000, guid: 610bc841199bc1b46980a6ecf9479e8f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #12082'
+    second: {fileID: 2100000, guid: 718e9fbc85ce3f24e89d025cfb983c8c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #12095'
+    second: {fileID: 2100000, guid: 11e1cebf7ee45544493fd7b1d8283520, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #12107'
+    second: {fileID: 2100000, guid: e681d9455bccc4449840eeacb2615de9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #12248'
+    second: {fileID: 2100000, guid: 03d0af976e0778e48a61614323ec9a73, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #12264'
+    second: {fileID: 2100000, guid: 1cd8d6dc0a03b5642b0c52178a468789, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #16344'
+    second: {fileID: 2100000, guid: c6c42b2606542244eac9d7c25a3d5247, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: No Name
+    second: {fileID: 2100000, guid: 2c26a9fee1553ba4aaa95bc568ff8897, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PlasticBright
+    second: {fileID: 2100000, guid: f1f2c26267335ea4a9645e1ac7dd620d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PlasticDark
+    second: {fileID: 2100000, guid: 8ae4016f61781d04c8392f596b89c1c4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Red
+    second: {fileID: 2100000, guid: e21182cab6ea6c341b5cc511bf33a645, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Rubber
+    second: {fileID: 2100000, guid: 7a256a094d51d364495d4220d881e5c4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Yellow
+    second: {fileID: 2100000, guid: 768de4447dabbd5498d775cea7c448f4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: car_body
+    second: {fileID: 2100000, guid: c5a8930bdfe36344ba6e0aec72bd36f6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: glass
+    second: {fileID: 2100000, guid: bdad776f4afc4bf42aa05d711e5265ed, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: metalDark
+    second: {fileID: 2100000, guid: a641303e5ee76cf49b0995cc791c685b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: metalbright
+    second: {fileID: 2100000, guid: 7ff86ba7ce9ebad4aa56617bc48aa67a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: windows
+    second: {fileID: 2100000, guid: 73dd0f3f44a138146bf7331a0fb17934, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

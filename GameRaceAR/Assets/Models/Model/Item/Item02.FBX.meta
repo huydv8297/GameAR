@@ -1,0 +1,200 @@
+fileFormatVersion: 2
+guid: 8c010d54c56019a479f35a89977714ad
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: 06AbsorberFRSport
+    100002: 06AbsorberFRStock
+    100004: 06ArmR
+    100006: 06BrakeDiskFR
+    100008: 06CaliperFRSport
+    100010: 06CaliperFRStock
+    100012: 06HubFR
+    100014: 06WheelFRType1
+    100016: 06WheelFRType2
+    100018: 06WiderFR
+    100020: //RootNode
+    400000: 06AbsorberFRSport
+    400002: 06AbsorberFRStock
+    400004: 06ArmR
+    400006: 06BrakeDiskFR
+    400008: 06CaliperFRSport
+    400010: 06CaliperFRStock
+    400012: 06HubFR
+    400014: 06WheelFRType1
+    400016: 06WheelFRType2
+    400018: 06WiderFR
+    400020: //RootNode
+    2100000: metalDark
+    2100002: Red
+    2100004: metalbright
+    2100006: Yellow
+    2100008: PlasticDark
+    2100010: Rubber
+    2100012: Green
+    2100014: 'Material #16250'
+    2100016: rim
+    2100018: 'Material #14987'
+    2300000: 06AbsorberFRSport
+    2300002: 06AbsorberFRStock
+    2300004: 06ArmR
+    2300006: 06BrakeDiskFR
+    2300008: 06CaliperFRSport
+    2300010: 06CaliperFRStock
+    2300012: 06HubFR
+    2300014: 06WheelFRType1
+    2300016: 06WheelFRType2
+    2300018: 06WiderFR
+    3300000: 06AbsorberFRSport
+    3300002: 06AbsorberFRStock
+    3300004: 06ArmR
+    3300006: 06BrakeDiskFR
+    3300008: 06CaliperFRSport
+    3300010: 06CaliperFRStock
+    3300012: 06HubFR
+    3300014: 06WheelFRType1
+    3300016: 06WheelFRType2
+    3300018: 06WiderFR
+    4300000: 06CaliperFRStock
+    4300002: 06CaliperFRSport
+    4300004: 06HubFR
+    4300006: 06AbsorberFRStock
+    4300008: 06AbsorberFRSport
+    4300010: 06ArmR
+    4300012: 06BrakeDiskFR
+    4300014: 06WiderFR
+    4300016: 06WheelFRType1
+    4300018: 06WheelFRType2
+    2186277476908879412: ImportLogs
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Green
+    second: {fileID: 2100000, guid: d45492cfac4f408499dc32996570959d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #14987'
+    second: {fileID: 2100000, guid: 60fc9ab820a21484692f3727d0d098df, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #16250'
+    second: {fileID: 2100000, guid: d81fde9683d5bbb4191615b94c845c47, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PlasticDark
+    second: {fileID: 2100000, guid: 1f579d0877fa736499e9a6888c439105, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Red
+    second: {fileID: 2100000, guid: 3e2cb1eb94ee38448ae876a2f924c81d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Rubber
+    second: {fileID: 2100000, guid: 0401f82e050807044bc037ab0e21cd8e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Yellow
+    second: {fileID: 2100000, guid: bf74a62680293114ea45017d99c9ef51, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: metalDark
+    second: {fileID: 2100000, guid: fa76521b1c2389c4a8bfb9137de3d905, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: metalbright
+    second: {fileID: 2100000, guid: a49b40365bceb274aa5b029101893f3b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: rim
+    second: {fileID: 2100000, guid: a13287114ed1ff9419aca617bb4b9d23, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.5
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

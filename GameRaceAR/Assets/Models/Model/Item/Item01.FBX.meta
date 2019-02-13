@@ -1,0 +1,260 @@
+fileFormatVersion: 2
+guid: 1514571af881b6a40a6c4fe47b446d37
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: 06AirFilter
+    100002: 06CamshaftSport
+    100004: 06CamshaftStock
+    100006: 06Carburetor
+    100008: 06Clutch
+    100010: 06Compressor
+    100012: 06CompressorPiping
+    100014: 06Crankshaft
+    100016: 06CylinderBlock
+    100018: 06CylinderHead
+    100020: 06CylinderHeadCover
+    100022: 06DriveShaft
+    100024: 06ExhaustHighway
+    100026: 06ExhaustManifold
+    100028: 06Gearbox
+    100030: 06IgnitionSystem
+    100032: 06IntakeManifold
+    100034: 06OilPan
+    100036: 06PistonsReinforsed
+    100038: 06PistonsStock
+    100040: 06TimingBelt
+    100042: 06ValvesCover
+    100044: //RootNode
+    400000: 06AirFilter
+    400002: 06CamshaftSport
+    400004: 06CamshaftStock
+    400006: 06Carburetor
+    400008: 06Clutch
+    400010: 06Compressor
+    400012: 06CompressorPiping
+    400014: 06Crankshaft
+    400016: 06CylinderBlock
+    400018: 06CylinderHead
+    400020: 06CylinderHeadCover
+    400022: 06DriveShaft
+    400024: 06ExhaustHighway
+    400026: 06ExhaustManifold
+    400028: 06Gearbox
+    400030: 06IgnitionSystem
+    400032: 06IntakeManifold
+    400034: 06OilPan
+    400036: 06PistonsReinforsed
+    400038: 06PistonsStock
+    400040: 06TimingBelt
+    400042: 06ValvesCover
+    400044: //RootNode
+    2100000: metalDark
+    2100002: metalbright
+    2100004: PlasticDark
+    2100006: Blue
+    2100008: 'Material #11238'
+    2100010: PlasticBright
+    2100012: Red
+    2100014: Rubber
+    2100016: Green
+    2100018: No Name
+    2300000: 06AirFilter
+    2300002: 06CamshaftSport
+    2300004: 06CamshaftStock
+    2300006: 06Carburetor
+    2300008: 06Clutch
+    2300010: 06Compressor
+    2300012: 06CompressorPiping
+    2300014: 06Crankshaft
+    2300016: 06CylinderBlock
+    2300018: 06CylinderHead
+    2300020: 06CylinderHeadCover
+    2300022: 06DriveShaft
+    2300024: 06ExhaustHighway
+    2300026: 06ExhaustManifold
+    2300028: 06Gearbox
+    2300030: 06IgnitionSystem
+    2300032: 06IntakeManifold
+    2300034: 06OilPan
+    2300036: 06PistonsReinforsed
+    2300038: 06PistonsStock
+    2300040: 06TimingBelt
+    2300042: 06ValvesCover
+    3300000: 06AirFilter
+    3300002: 06CamshaftSport
+    3300004: 06CamshaftStock
+    3300006: 06Carburetor
+    3300008: 06Clutch
+    3300010: 06Compressor
+    3300012: 06CompressorPiping
+    3300014: 06Crankshaft
+    3300016: 06CylinderBlock
+    3300018: 06CylinderHead
+    3300020: 06CylinderHeadCover
+    3300022: 06DriveShaft
+    3300024: 06ExhaustHighway
+    3300026: 06ExhaustManifold
+    3300028: 06Gearbox
+    3300030: 06IgnitionSystem
+    3300032: 06IntakeManifold
+    3300034: 06OilPan
+    3300036: 06PistonsReinforsed
+    3300038: 06PistonsStock
+    3300040: 06TimingBelt
+    3300042: 06ValvesCover
+    4300000: 06AirFilter
+    4300002: 06CylinderHead
+    4300004: 06Compressor
+    4300006: 06CylinderBlock
+    4300008: 06PistonsReinforsed
+    4300010: 06PistonsStock
+    4300012: 06Crankshaft
+    4300014: 06OilPan
+    4300016: 06Gearbox
+    4300018: 06Clutch
+    4300020: 06CamshaftStock
+    4300022: 06CamshaftSport
+    4300024: 06CylinderHeadCover
+    4300026: 06IgnitionSystem
+    4300028: 06IntakeManifold
+    4300030: 06Carburetor
+    4300032: 06TimingBelt
+    4300034: 06ExhaustManifold
+    4300036: 06CompressorPiping
+    4300038: 06ExhaustHighway
+    4300040: 06DriveShaft
+    4300042: 06ValvesCover
+    2186277476908879412: ImportLogs
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Blue
+    second: {fileID: 2100000, guid: 6d892f929d9683a4cb4fce72666b9869, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Green
+    second: {fileID: 2100000, guid: 6363a1838cd69f243b4503fbcec6daf4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #11238'
+    second: {fileID: 2100000, guid: 403d832a4e5532e498e07127b08768bd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: No Name
+    second: {fileID: 2100000, guid: 9811201de6fe0b54ab89495dba1864af, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PlasticBright
+    second: {fileID: 2100000, guid: 1aea10617c1d00a4cb84c8f83ddc9076, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PlasticDark
+    second: {fileID: 2100000, guid: 66f55066ff0e5b1499685edffdef74d9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Red
+    second: {fileID: 2100000, guid: c83b3454f3777be41977ec1dd2926968, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Rubber
+    second: {fileID: 2100000, guid: 0d8683b4a92f5794face7dd41a9f9de0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: metalDark
+    second: {fileID: 2100000, guid: 8512dc58ec185584bbdebec2178649d7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: metalbright
+    second: {fileID: 2100000, guid: 1f83ce37d08e64446950ea68f156a974, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.5
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
