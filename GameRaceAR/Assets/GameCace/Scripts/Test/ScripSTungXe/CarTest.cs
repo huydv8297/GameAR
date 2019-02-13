@@ -11,7 +11,7 @@ public class CarTest : MonoBehaviour {
     private float speed = 20f;
     
     private Rigidbody rb;
-    public Text textH, textV;
+    //public Text textH, textV;
     private float m_motorFprce;
 
     public float motorFprce = 50;
@@ -34,9 +34,9 @@ public class CarTest : MonoBehaviour {
     float trang;
     float tung;
 
-    public Texture2D speedOmeterPointer;
-    public Texture2D speedOmeterDial;
-    public AudioSource audiocar;
+    //public Texture2D speedOmeterPointer;
+    //public Texture2D speedOmeterDial;
+    //public AudioSource audiocar;
 
 
 
@@ -46,7 +46,7 @@ public class CarTest : MonoBehaviour {
     void Start () {
         rb = GetComponent<Rigidbody>();
         Input.gyro.enabled = true;
-        audiocar = GetComponent<AudioSource>();
+        //audiocar = GetComponent<AudioSource>();
 
     }
 	
@@ -72,8 +72,6 @@ public class CarTest : MonoBehaviour {
         moveHorizontal = gyro.gravity.x;
         moveVertical = gyro.gravity.y;
         control();
-       
-
     }
 
     //void doMovement()
@@ -169,26 +167,26 @@ public class CarTest : MonoBehaviour {
         SceneManager.LoadScene("test scene");
     }
 
-    public void OnGUI()
-    {
-        GUI.DrawTexture(new Rect(Screen.width / 2 - 250, Screen.height - 300, 500, 300), speedOmeterDial);
-        float speedFactor = currentSpeed / Topspeed;
-        float rotationAngle;
-        if (currentSpeed > 1)
-        {
-            audiocar.Play();
-        }
-        if (currentSpeed >= 0)
-        {
-            rotationAngle = Mathf.Lerp(0, 180, speedFactor);
-        }
-        else
-        {
-            rotationAngle = Mathf.Lerp(0, 180, -speedFactor);
-        }
+    //public void OnGUI()
+    //{
+    //    GUI.DrawTexture(new Rect(Screen.width / 2 - 250, Screen.height - 300, 500, 300), speedOmeterDial);
+    //    float speedFactor = currentSpeed / Topspeed;
+    //    float rotationAngle;
+    //    if (currentSpeed > 1)
+    //    {
+    //        audiocar.Play();
+    //    }
+    //    if (currentSpeed >= 0)
+    //    {
+    //        rotationAngle = Mathf.Lerp(0, 180, speedFactor);
+    //    }
+    //    else
+    //    {
+    //        rotationAngle = Mathf.Lerp(0, 180, -speedFactor);
+    //    }
 
-        GUIUtility.RotateAroundPivot(rotationAngle, new Vector2(Screen.width / 2, Screen.height));
-        GUI.DrawTexture(new Rect(Screen.width / 2 - 250, Screen.height - 250, 500, 500), speedOmeterPointer);
+    //    GUIUtility.RotateAroundPivot(rotationAngle, new Vector2(Screen.width / 2, Screen.height));
+    //    GUI.DrawTexture(new Rect(Screen.width / 2 - 250, Screen.height - 250, 500, 500), speedOmeterPointer);
 
-    }
+    //}
 }
