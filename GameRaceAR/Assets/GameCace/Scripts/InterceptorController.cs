@@ -18,21 +18,19 @@ public class InterceptorController : MonoBehaviour {
     [SerializeField]
     Transform _destination;
     NavMeshAgent _navMeshAgent;
-    public AICarTest aitestcar;
+    //public AICarTest aitestcar;
  
 
 
     private void Start()
     {
         _navMeshAgent = this.GetComponent<NavMeshAgent>();
-      
-        
+ 
     }
 
     private void Update()
     {
-       
-       
+
         if (_navMeshAgent == null)
         {
             Debug.LogError("Error");

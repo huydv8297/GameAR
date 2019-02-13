@@ -129,8 +129,8 @@ public class CarTest : MonoBehaviour {
         {
             tung = moveVertical * 1;
             trang = moveHorizontal * 1;
-            textH.text = "currentSpeed: " + currentSpeed.ToString();
-            textV.text = "tung: " + tung.ToString();
+            //textH.text = "currentSpeed: " + currentSpeed.ToString();
+            //textV.text = "tung: " + tung.ToString();
 
             rearrightW.motorTorque = maxTorque * tung;
             rearleftW.motorTorque = maxTorque * tung;
@@ -189,7 +189,6 @@ public class CarTest : MonoBehaviour {
 
         GUIUtility.RotateAroundPivot(rotationAngle, new Vector2(Screen.width / 2, Screen.height));
         GUI.DrawTexture(new Rect(Screen.width / 2 - 250, Screen.height - 250, 500, 500), speedOmeterPointer);
-        
 
     }
 }
