@@ -16,43 +16,52 @@ public class UIController : MonoBehaviour {
     private void Update()
     {
         RaycastHit hit;
-        //Ray ray = new Ray(cursor.position,transform.position -  cursor.position);
         Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         Debug.DrawRay(ray.origin, ray.direction * 5000, Color.red, Mathf.Infinity);
-        //int layerMask = 1 << 5;
-        //int layerMask1 = ~layerMask;
+
         if (Physics.Raycast(ray, out hit, Mathf.Infinity))
         {
             if (hit.transform.CompareTag("control"))
             {
-                Debug.Log("hit");
                 isMoveable = false;
             }
-            
+            else
+            {
+                isMoveable = true;
+            }
+
         }
-        else
-        {
-            isMoveable = true;
-        }
+        
     }
 
     void LateUpdate () {
         if(isMoveable)
         {
-            
-
             Quaternion newRotation = target.rotation;
             newRotation.x = 0;
             newRotation.z = 0;
 
             transform.rotation = newRotation;
 
-            Vector3 newPosition = target.position;
-            newPosition.y = fixedY;
-            transform.position = newPosition;
+            StartCoroutine(ChangePosition());
+            
             isMoveable = false;
         }
         
+    }
+
+    IEnumerator ChangePosition()
+    {
+        float percent = 0f;
+        Vector3 oldPosition = transform.position;
+        while(percent <= 1)
+        {
+            percent += Time.deltaTime;
+            Vector3 newPosition = Vector3.Lerp(oldPosition, target.position, percent);
+            newPosition.y = fixedY;
+            transform.position = newPosition;
+            yield return new WaitForSeconds(Time.deltaTime);
+        }
     }
 
 
