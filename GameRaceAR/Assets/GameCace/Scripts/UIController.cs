@@ -11,6 +11,7 @@ public class UIController : MonoBehaviour {
     public bool isMoveable;
 	void Start () {
         fixedY = transform.position.y;
+       // transform.LookAt(Camera.main.transform);
 	}
 
     private void Update()
@@ -58,7 +59,7 @@ public class UIController : MonoBehaviour {
             Vector3 newPosition = Vector3.Lerp(oldPosition, target.position, percent);
             newPosition.y = fixedY;
             transform.position = newPosition;
-            yield return new WaitForSeconds(Time.deltaTime);
+            yield return new WaitForSeconds(Time.deltaTime/10);
         }
     }
 
