@@ -35,16 +35,14 @@ public class UIController : MonoBehaviour {
     }
 
     void LateUpdate () {
-        if(isMoveable)
+        Quaternion newRotation = target.rotation;
+        newRotation.x = 0;
+        newRotation.z = 0;
+
+        transform.rotation = newRotation;
+        if (isMoveable)
         {
-            Quaternion newRotation = target.rotation;
-            newRotation.x = 0;
-            newRotation.z = 0;
-
-            transform.rotation = newRotation;
-
             StartCoroutine(ChangePosition());
-            
             isMoveable = false;
         }
         
