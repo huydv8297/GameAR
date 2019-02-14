@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIController : MonoBehaviour {
+public class UIController : MonoBehaviour
+{
 
     public Transform target;
     public Transform cursor;
     public float fixedY;
+    public float speed = 20f;
 
     public bool isMoveable;
 	void Start () {
@@ -16,23 +18,33 @@ public class UIController : MonoBehaviour {
 
     private void Update()
     {
-        RaycastHit hit;
-        Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
-        Debug.DrawRay(ray.origin, ray.direction * 5000, Color.red, Mathf.Infinity);
+        //RaycastHit hit;
+        //Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        //Debug.DrawRay(ray.origin, ray.direction * 5000, Color.red, Mathf.Infinity);
 
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+        //if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+        //{
+        //    if (hit.transform.CompareTag("control"))
+        //    {
+        //        isMoveable = false;
+        //    }
+        //    else
+        //    {
+        //        isMoveable = true;
+        //    }
+
+        //}
+
+        if(CustomCursor.HitAllTransform(transform))
         {
-            if (hit.transform.CompareTag("control"))
-            {
-                isMoveable = false;
-            }
-            else
-            {
-                isMoveable = true;
-            }
-
+            Debug.Log("hit");
+            isMoveable = false;
         }
-        
+        else
+        {
+            Debug.Log("no hit");
+            isMoveable = true;
+        }
     }
 
     void LateUpdate () {
@@ -59,9 +71,9 @@ public class UIController : MonoBehaviour {
             Vector3 newPosition = Vector3.Lerp(oldPosition, target.position, percent);
             newPosition.y = fixedY;
             transform.position = newPosition;
-            yield return new WaitForSeconds(Time.deltaTime/10);
+            yield return new WaitForSeconds(Time.deltaTime / speed);
         }
     }
 
-
+  
 }

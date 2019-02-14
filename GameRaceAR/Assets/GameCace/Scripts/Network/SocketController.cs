@@ -5,6 +5,7 @@ using Quobject.SocketIoClientDotNet.Client;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
+using UnityEngine.SceneManagement;
 
 public class Data
 {
@@ -110,7 +111,15 @@ public class SocketController : MonoBehaviour
                 screenText.text = socketClient.roomId;
                 break;
             case Response.OnJoinedRoom:
+                if(socketClient.type == Type.Screen)
+                {
+                    SceneManager.LoadScene("ScreenScene");
+                }
 
+                if (socketClient.type == Type.Remote)
+                {
+                    SceneManager.LoadScene("RemoteScene");
+                }
                 break;
             default:
                 break;

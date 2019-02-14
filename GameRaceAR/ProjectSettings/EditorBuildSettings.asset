@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/GameCace/Scenes/HelloAR.unity
+    path: Assets/GameCace/Scenes/Connect.unity
+    guid: e6a6fa04348cb45c9b0221eb19c946da
+  - enabled: 1
+    path: Assets/GameCace/Scenes/RemoteScene.unity
+    guid: 640da14eaacb7ee46b1ec976574adef1
+  - enabled: 1
+    path: Assets/GameCace/Scenes/ScreenScene.unity
     guid: f36a439d6da6305479affee419ca36a4
   m_configObjects: {}

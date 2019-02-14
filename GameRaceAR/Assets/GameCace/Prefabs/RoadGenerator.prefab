@@ -68,7 +68,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1362322658431260}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.02, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4224899176854240}
@@ -146,19 +146,9 @@ MonoBehaviour:
     n1:
       position: {x: 0.18906164, y: -0.01292038, z: -1.0627737}
       direction: {x: 0.6915542, y: -0.038423494, z: -1.0417252}
-      Changed:
-        m_PersistentCalls:
-          m_Calls: []
-        m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-          Culture=neutral, PublicKeyToken=null
     n2:
       position: {x: 0.92280483, y: 0, z: -0.9640925}
       direction: {x: 1.5547786, y: 0, z: -0.94214463}
-      Changed:
-        m_PersistentCalls:
-          m_Calls: []
-        m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-          Culture=neutral, PublicKeyToken=null
     Changed:
       m_PersistentCalls:
         m_Calls: []
@@ -178,35 +168,15 @@ MonoBehaviour:
   nodes:
   - position: {x: 0.18906164, y: -0.01292038, z: -1.0627737}
     direction: {x: 0.6915542, y: -0.038423494, z: -1.0417252}
-    Changed:
-      m_PersistentCalls:
-        m_Calls: []
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
   - position: {x: 0.92280483, y: 0, z: -0.9640925}
     direction: {x: 1.5547786, y: 0, z: -0.94214463}
-    Changed:
-      m_PersistentCalls:
-        m_Calls: []
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
   curves:
   - n1:
       position: {x: 0.18906164, y: -0.01292038, z: -1.0627737}
       direction: {x: 0.6915542, y: -0.038423494, z: -1.0417252}
-      Changed:
-        m_PersistentCalls:
-          m_Calls: []
-        m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-          Culture=neutral, PublicKeyToken=null
     n2:
       position: {x: 0.92280483, y: 0, z: -0.9640925}
       direction: {x: 1.5547786, y: 0, z: -0.94214463}
-      Changed:
-        m_PersistentCalls:
-          m_Calls: []
-        m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-          Culture=neutral, PublicKeyToken=null
     Changed:
       m_PersistentCalls:
         m_Calls: []
