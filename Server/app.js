@@ -42,7 +42,6 @@ function Response(responeCode,socket, roomId = null, msg = null)
 			id: socket.userId,
 			msg: msg
 		});
-		
 	}
 	
 	console.log(responeCode + msg);
@@ -95,14 +94,21 @@ io.on('connection', function(socket){
 					}
 				}
 				break;
-			case 'Move':
+			case 'OnMove':
 				console.log('message from user#' + socket.userId + ": " + data.msg);
 				Response('OnMove', socket,data.id, data.msg);
 				break;
-			default:
-				
+			case 'OnClickDown':
+				console.log('OnClickDown ');
 				break;
+			default:
+				console.log('message from user#' + socket.userId + ": " + data.msg);
+				Response(data.code, socket,data.id, data.msg);
+				break;
+				
 		}
+		console.log('ngoai ');
+		
 	});
 
 	//disconnect
