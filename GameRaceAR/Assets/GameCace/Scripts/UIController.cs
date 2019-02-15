@@ -49,8 +49,8 @@ public class UIController : MonoBehaviour
 
     void LateUpdate () {
         Quaternion newRotation = target.rotation;
-        newRotation.x = 0;
-        newRotation.z = 0;
+        //newRotation.x = 0;
+        //newRotation.z = 0;
 
         transform.rotation = newRotation;
         if (isMoveable)
@@ -69,6 +69,7 @@ public class UIController : MonoBehaviour
         {
             percent += Time.deltaTime;
             Vector3 newPosition = Vector3.Lerp(oldPosition, target.position, percent);
+            
             newPosition.y = fixedY;
             transform.position = newPosition;
             yield return new WaitForSeconds(Time.deltaTime / speed);

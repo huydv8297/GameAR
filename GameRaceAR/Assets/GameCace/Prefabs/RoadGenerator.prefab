@@ -166,8 +166,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nodes:
-  - position: {x: 0.18906164, y: -0.01292038, z: -1.0627737}
-    direction: {x: 0.6915542, y: -0.038423494, z: -1.0417252}
+  - position: {x: 0.18906164, y: 0, z: -1.0627737}
+    direction: {x: 0.6915542, y: 0, z: -1.0417252}
   - position: {x: 0.92280483, y: 0, z: -0.9640925}
     direction: {x: 1.5547786, y: 0, z: -0.94214463}
   curves:

@@ -24,10 +24,9 @@ function getNewRoomId(){
 function Response(responeCode,socket, msg = null)
 {	
 	
-	console.log(responeCode + msg);
-	if(responeCode === 'OnJoinedRoom')
+	console.log(responeCode + ' ' + msg);
+	if(responeCode != 'OnCreatedRoom')
 	{
-		console.log("Start...");
 		io.to(msg).emit('Response', {
 			code: responeCode,
 			id: socket.userId,
@@ -58,25 +57,34 @@ io.on('connection', function(socket){
 	
 	socket.on('Request', function(data){
 		console.log('GetRequest ' + data.code + ' from ' + socket.userId);
+	/*	if(data.code == "OnClickDown")
+		{
+			Response('OnClickDown', socket, data.id);
+			console.log('OnClickDown');
+		}else if(data.code == "OnClickUp"){
+			Response('OnClickUp', socket, data.id);
+			console.log('OnClickUp');
+		}
+	*/	
 		switch(data.code)
 		{
 			case 'GetID':
 				socket.to(socket.userId).emit('GetID', socket.userId);
 				break;
 			//Chat
-			case 'Chat':
+			case "Chat":
 				console.log('message from user#' + socket.userId + ": " + data.msg);
 				Response('Chat', socket, data.msg);
 				break;
 			//Create Room	
-			case 'CreateRoom':
+			case "CreateRoom":
 				var roomId = getNewRoomId();
 				socket.join(roomId, function(){});
 				console.log('User' + socket.userId + ' create room id : ' + roomId);
 				Response('OnCreatedRoom', socket, roomId);
 				break;
 			//Join Room	
-			case 'JoinRoom':
+			case "JoinRoom":
 				if(!isExistRoom(data.msg)){
 					Response('Error', socket, 'cant join room');
 				}
@@ -90,13 +98,30 @@ io.on('connection', function(socket){
 						Response('Error', socket, ' full');
 					}
 				}
-				break;
+				break;	
 			default:
-				
+				console.log('Respone');
+				Response(data.code, socket, data.id);
 				break;
 		}
 	});
-
+	
+/*	socket.on('onclickdown', function(roomId){
+		console.log('Send onclickdown ' + roomId);
+		io.to(roomId).emit('onclickdown');
+	});
+	
+	
+	socket.on('onclickup', function(roomId){
+		console.log('Send onclickup ' + roomId);
+		io.to(roomId).emit('onclickup');
+	});
+	
+	socket.on('exit', function(roomId){
+		console.log('Send exit ' + roomId);
+		io.to(roomId).emit('exit');
+	});
+*/
 	//disconnect
 	socket.on('disconnect', function () {
 		console.log('A user disconnected');

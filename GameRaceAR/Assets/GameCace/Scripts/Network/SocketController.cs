@@ -30,8 +30,9 @@ public class Data
 };
 public enum Type : int
 {
-    Screen = 0,
-    Remote = 1
+    None = 0,
+    Screen = 1,
+    Remote = 2
 }
 
 public static class Request
@@ -39,7 +40,11 @@ public static class Request
     public const string Chat = "Chat";
     public const string SelectScreenType = "CreateRoom";
     public const string SelectRemoteType = "JoinRoom";
-    public const string Move = "Move";
+    public const string Move = "OnMove";
+    public const string ClickDown = "OnClickDown";
+    public const string ClickUp = "OnClickUp";
+    public const string Exit = "Exit";
+
 }
 
 public static class Response
@@ -48,7 +53,10 @@ public static class Response
     public const string OnCreatedRoom = "OnCreatedRoom";
     public const string OnJoinedRoom = "OnJoinedRoom";
     public const string OnMove = "OnMove";
+    public const string OnClickDown = "OnClickDown";
+    public const string OnClickUp = "OnClickUp";
     public const string Error = "Error";
+    public const string Exit = "Exit";
 }
 
 
@@ -77,13 +85,20 @@ public class SocketController : MonoBehaviour
     public GameObject test;
     public string roomId;
     public static Action<Data> OnMove = delegate { };
-
+    public static Action OnClickDown = delegate { };
+    public static Action OnClickUp = delegate { };
+    public static Action OnExit = delegate {  };
+    public GameObject remoteScene;
+    public GameObject screenScene;
+    public GameObject selectScene;
 
     private void Awake()
     {
         if (Instance == null)
             Instance = this;
         socketClient = new SocketClient();
+
+        OnExit += Destroy;
     }
 
     void Destroy()
@@ -102,7 +117,6 @@ public class SocketController : MonoBehaviour
         DoOpen();
     }
 
-    // Update is called once per frame
     void Update()
     {
         switch (state)
@@ -111,15 +125,18 @@ public class SocketController : MonoBehaviour
                 screenText.text = socketClient.roomId;
                 break;
             case Response.OnJoinedRoom:
-                if(socketClient.type == Type.Screen)
+               
+                if (socketClient.type == Type.Screen)
                 {
-                    SceneManager.LoadScene("ScreenScene");
+                    screenScene.SetActive(true);
+                    selectScene.SetActive(false);
                 }
-
                 if (socketClient.type == Type.Remote)
                 {
-                    SceneManager.LoadScene("RemoteScene");
+                    remoteScene.SetActive(true);
+                    selectScene.SetActive(false);
                 }
+                state = "Playing";
                 break;
             default:
                 break;
@@ -138,7 +155,6 @@ public class SocketController : MonoBehaviour
             }
         }
     }
-
     void DoOpen()
     {
         if (socket == null)
@@ -167,8 +183,11 @@ public class SocketController : MonoBehaviour
         if (socket != null)
         {
             socket.Disconnect();
+            Debug.Log("Disconnect");
             socket = null;
         }
+
+        Application.Quit();
     }
 
     public void SendRequest(Data data)
@@ -181,11 +200,36 @@ public class SocketController : MonoBehaviour
 
     }
 
+    
+
     public void GetRespone()
     {
+        //socket.On("onclickdown", () =>
+        //{
+        //    Debug.Log("onclickdown");
+        //    OnClickDown();
+        //});
+
+        //socket.On("onclickup", () =>
+        //{
+        //    Debug.Log("onclickup");
+        //    OnClickUp();
+        //});
+
+        //socket.On("exit", () =>
+        //{
+        //    Debug.Log("exit");
+        //    Application.Quit();
+        //});
+
         socket.On("Response", (data) => {
             string str = data.ToString();
             Debug.Log("GetResponse" + str);
+            lock (chatLog)
+            {
+                chatLog.Add(str);
+            }
+
             Data responsetData = JsonConvert.DeserializeObject<Data>(str);
             switch (responsetData.code)
             {
@@ -208,7 +252,9 @@ public class SocketController : MonoBehaviour
                     
                     break;
                 case Response.OnJoinedRoom:
-                    socketClient.type = Type.Remote;
+                    if(socketClient.type == Type.None)
+                        socketClient.type = Type.Remote;
+                   
                     socketClient.id = responsetData.id;
                     socketClient.roomId = responsetData.msg;
                     roomId = responsetData.msg;
@@ -219,11 +265,52 @@ public class SocketController : MonoBehaviour
                     Debug.Log("OnMove");
                     OnMove(responsetData);
                     break;
+                case Response.OnClickDown:
+                    Debug.Log("OnClickDown");
+                    OnClickDown();
+                    break;
+                case Response.OnClickUp:
+                    Debug.Log("OnClickUp");
+                    OnClickUp();
+                    break;
+                case Response.Exit:
+                    Debug.Log("Exit");
+                    OnExit();
+                    break;
                 default:
                     break;
             }
         });
+
+        
     }
+
+    //public void SendExit()
+    //{
+    //    if (socket != null)
+    //    {
+    //        socket.Emit("exit", socketClient.roomId);
+    //        Debug.Log("Send exit:" + socketClient.roomId);
+    //    }
+    //}
+
+    //public void SendClickDown(string roomId)
+    //{
+    //    if (socket != null)
+    //    {
+    //        socket.Emit("onclickdown", roomId);
+    //        Debug.Log("Send OnClickDown:" + roomId.ToString());
+    //    }
+    //}
+
+    //public void SendClickUp(string roomId)
+    //{
+    //    if (socket != null)
+    //    {
+    //        socket.Emit("onclickup", roomId);
+    //        Debug.Log("Send OnClickUp:" + roomId.ToString());
+    //    }
+    //}
 
     public void SelectScreen()
     {

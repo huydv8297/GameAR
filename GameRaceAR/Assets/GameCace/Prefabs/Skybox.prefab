@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 65269631439352080}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 65755088855308238}
   m_Layer: 0
   m_Name: Cube (2)
-  m_TagString: Untagged
+  m_TagString: wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -60,7 +60,7 @@ GameObject:
   - component: {fileID: 65962716064757802}
   m_Layer: 0
   m_Name: Cube (3)
-  m_TagString: Untagged
+  m_TagString: wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -78,7 +78,7 @@ GameObject:
   - component: {fileID: 65886662704128554}
   m_Layer: 0
   m_Name: Cube (5)
-  m_TagString: Untagged
+  m_TagString: wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 33558860051081512}
   - component: {fileID: 23514425633048590}
   - component: {fileID: 65503525241721698}
-  - component: {fileID: 114488375118193594}
+  - component: {fileID: 114366713665101782}
   m_Layer: 0
   m_Name: Plane
   m_TagString: terria
@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 65000472484186084}
   m_Layer: 0
   m_Name: Cube (1)
-  m_TagString: Untagged
+  m_TagString: wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 65668956261390578}
   m_Layer: 0
   m_Name: Cube (4)
-  m_TagString: Untagged
+  m_TagString: wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -174,7 +174,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1327314236630624}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalPosition: {x: 0, y: -54, z: 0}
   m_LocalScale: {x: 100, y: 1, z: 100}
   m_Children: []
   m_Father: {fileID: 4554360452029728}
@@ -420,7 +420,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100022, guid: 1e5a1ea123d4d554d9230393b59b7b20, type: 3}
+  - {fileID: 2100000, guid: 0aa37164acf594e03876b4e0b590280e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -643,7 +643,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114488375118193594
+--- !u!114 &114366713665101782
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -651,9 +651,37 @@ MonoBehaviour:
   m_GameObject: {fileID: 1327314236630624}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e038bf700cfa444fb16c6ef963be9f9, type: 3}
+  m_Script: {fileID: 11500000, guid: 34677669769a00745935d619894fe176, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spline: {fileID: 0}
+  splines: []
+  lastNode:
+    position: {x: 0, y: 0, z: 0}
+    direction: {x: 0, y: 0, z: 0}
+  isCreate: 0
+  isRoadLine: 1
+  f: 10
+  position: {x: 0, y: 0, z: 0}
+  space: 6
+  height: 3
+  scale: {x: 0, y: 0, z: 0}
+  roadGeneretorPrefab: {fileID: 1362322658431260, guid: 4a72543d3981a8d41b4881c4f5345422,
+    type: 2}
+  bridgeGeneretorPrefab: {fileID: 0}
+  terrianController: {fileID: 0}
+  bridgeGO: {fileID: 0}
+  road: {fileID: 0}
+  bridge: {fileID: 0}
+  river: {fileID: 0}
+  roadLine: {fileID: 0}
+  roadHight: {fileID: 0}
+  heightRoad: 0
+  log: {fileID: 0}
+  gameDataProjectFilePath: /Data/road.json
+  roadData:
+    position: []
+    direction: []
 --- !u!114 &114854066577755226
 MonoBehaviour:
   m_ObjectHideFlags: 1
