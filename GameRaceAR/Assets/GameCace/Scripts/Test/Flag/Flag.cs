@@ -15,36 +15,43 @@ public class Flag : MonoBehaviour
 
     public void OnClickDown()
     {
-        if (isCreate.isOn && isSetable)
+        if (isCreate.isOn)
         {
             Debug.Log("Add flag");
             LogController.log.text = "Add flag";
             flags.Add(curentFlag);
             curentFlag = null;
         }
-        else
+        else if(isCreate.isOn)
         {
             LogController.log.text = "else Add flag";
             curentFlag = null;
+
         }
-    }
-
-
-    private void Update()
-    {
-        if(CustomCursor.isClick)
-        {
-            OnClickDown();
-            CustomCursor.isClick = false;
-        }
-
-        if (!isCreate.isOn)
+        else
         {
             if (curentFlag != null)
                 Destroy(curentFlag);
             curentFlag = null;
             return;
         }
+    }
+
+
+    private void Update()
+    {
+        if (!isCreate.isOn)
+        {
+            return;
+        }
+
+        if (!CustomCursor.HitAllTag("control") &&  CustomCursor.isClick)
+        {
+            OnClickDown();
+            CustomCursor.isClick = false;
+        }
+
+        
 
         RaycastHit hit;
         Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
@@ -52,7 +59,17 @@ public class Flag : MonoBehaviour
         {
 
             Debug.DrawRay(ray.origin, ray.direction * Mathf.Infinity, Color.red, Mathf.Infinity);
-            if (curentFlag == null)
+            if (hit.transform.CompareTag("road"))
+            {
+                isSetable = true;
+                curentFlag.GetComponent<CheckArea>().SetGreenStatus();
+            }
+            else
+            {
+                curentFlag.GetComponent<CheckArea>().SetRedStatus();
+            }
+
+            if (isSetable)
             {
                 curentFlag = Instantiate(flagPrefab, transform);
                 curentFlag.GetComponent<CheckArea>().SetRedStatus();
@@ -63,16 +80,7 @@ public class Flag : MonoBehaviour
                 curentFlag.transform.position = newPos + new Vector3(0, 1f, 0);
             }
 
-            if (hit.transform.CompareTag("road"))
-            {
-                isSetable = true;
-                curentFlag.GetComponent<CheckArea>().SetGreenStatus();
-            }
-            else if (hit.transform.CompareTag("terria"))
-            {
-                isSetable = false;
-                curentFlag.GetComponent<CheckArea>().SetRedStatus();
-            }
+            
         }
     }
 }

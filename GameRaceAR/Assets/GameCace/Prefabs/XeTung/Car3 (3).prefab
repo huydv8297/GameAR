@@ -102,9 +102,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4527396853881788}
   - component: {fileID: 54027517661487970}
-  - component: {fileID: 114793861959524234}
-  - component: {fileID: 114226641395223330}
-  - component: {fileID: 114546017299676308}
   - component: {fileID: 65362063837460720}
   - component: {fileID: 82705811417132570}
   m_Layer: 0
@@ -789,54 +786,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &114226641395223330
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1489738648271386}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e87c01e7aab14c3499f82634c78f4319, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  smoothMotion: 1
-  smoothSpeed: 100
-  multiplier: 200
-  text: {fileID: 0}
---- !u!114 &114546017299676308
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1489738648271386}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0e1193759daa074792ee9ce150eec28, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  car: {fileID: 4527396853881788}
-  wheelFL: {fileID: 146298803940557914}
-  wheelFR: {fileID: 146704089875405306}
-  wheelRL: {fileID: 146319762482645712}
-  wheelRR: {fileID: 146472563697791434}
-  wheelFLTrans: {fileID: 4916358027285036}
-  wheelFRTrans: {fileID: 4012363942566656}
-  wheelRLTrans: {fileID: 4642925101417966}
-  wheelRRTrans: {fileID: 4095483741912246}
-  decelerationSpeed: 25
-  maxTorque: 120
-  currentSpeed: 0
-  topSpeed: 150
-  maxReverseSpeed: 50
-  throttle: 0
-  braked: 0
-  maxBrakeTorque: 100
-  audiocar: {fileID: 82705811417132570}
-  a: 0
-  b: 0
-  speedOmeterPointer: {fileID: 2800000, guid: 93cdc908b56e34743ad9fa8c83392730, type: 3}
-  speedOmeterDial: {fileID: 2800000, guid: 2cac5a89de092b6478d6d35457e49d61, type: 3}
 --- !u!114 &114607867057985060
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -850,36 +799,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   axis: {x: 0, y: 0, z: 0}
   spinSpeed: 10
---- !u!114 &114793861959524234
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1489738648271386}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fb21d3b5d6a1324d8f651a66befeb55, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 20
-  textH: {fileID: 0}
-  textV: {fileID: 0}
-  motorFprce: 50
-  maxSteerAngle: 30
-  frontleftW: {fileID: 146298803940557914}
-  frontrightW: {fileID: 146704089875405306}
-  rearleftW: {fileID: 146319762482645712}
-  rearrightW: {fileID: 146472563697791434}
-  frontleftT: {fileID: 4916358027285036}
-  frontrightT: {fileID: 4012363942566656}
-  rearleftT: {fileID: 4642925101417966}
-  rearrightT: {fileID: 4095483741912246}
-  currentSpeed: 0
-  Topspeed: 150
-  maxTorque: 120
-  speedOmeterPointer: {fileID: 2800000, guid: 93cdc908b56e34743ad9fa8c83392730, type: 3}
-  speedOmeterDial: {fileID: 2800000, guid: 2cac5a89de092b6478d6d35457e49d61, type: 3}
-  audiocar: {fileID: 82705811417132570}
 --- !u!146 &146298803940557914
 WheelCollider:
   m_ObjectHideFlags: 1

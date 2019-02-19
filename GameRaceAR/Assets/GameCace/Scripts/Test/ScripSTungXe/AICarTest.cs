@@ -17,7 +17,7 @@ public class AICarTest : MonoBehaviour {
     public float currentSpeed;
     public float topSpeed = 150;
     public float decelerationSpeed = 25;
-     Rigidbody rigidbody;
+    Rigidbody rigidbody;
     public Vector3[] paths;
     public float count = 2;
     public NavMeshAgent _navMeshAgent;
@@ -31,21 +31,24 @@ public class AICarTest : MonoBehaviour {
     WheelFrictionCurve fFrictionR;
     WheelFrictionCurve sFrictionR;
     public InterceptorController interceptor;
-   
+    bool isPlay;
 
     void Start()
     {
+        
+    }
+
+    public void Play()
+    {
+        isPlay = true;
         rigidbody = GetComponent<Rigidbody>();
         rigidbody.centerOfMass = centerOfMash;
-        GetPath();
         _navMeshAgent.updatePosition = false;
+        GetPath();
         _navMeshAgent.updateRotation = false;
         nextPosition = transform.position;
-         
-
     }
     //
-
     void GetPath()
     {
         Transform[] path_objs = pathground.GetComponentsInChildren<Transform>();
@@ -60,10 +63,13 @@ public class AICarTest : MonoBehaviour {
 
     }
     void Update()
-    {
+    {   
+        if(isPlay)
+        {
+            MoveSpeedCar();
+            UpdateWheelPoses();
+        }
         
-        MoveSpeedCar();
-        UpdateWheelPoses();
     }
 
     public void MoveSpeedCar()

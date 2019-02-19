@@ -13,7 +13,8 @@ using UnityEngine.Events;
 /// </summary>
 [DisallowMultipleComponent]
 [ExecuteInEditMode]
-public class Spline : MonoBehaviour {
+public class Spline : MonoBehaviour
+{
     /// <summary>
     /// The spline nodes.
     /// Warning, this collection shouldn't be changed manualy. Use specific methods to add and remove nodes.
@@ -47,7 +48,8 @@ public class Spline : MonoBehaviour {
     /// <summary>
     /// Clear the nodes and curves, then add two default nodes for the reset spline to be visible in editor.
     /// </summary>
-    private void Reset() {
+    private void Reset()
+    {
         nodes.Clear();
         curves.Clear();
         AddNode(new SplineNode(new Vector3(5, 0, 0), new Vector3(5, 0, -3)));
@@ -56,10 +58,11 @@ public class Spline : MonoBehaviour {
         UpdateAfterCurveChanged();
     }
 
-    private void OnEnable() {
+    private void OnEnable()
+    {
         curves.Clear();
-        
-        for (int i = 0; i < nodes.Count - 1; i++) {
+        for (int i = 0; i < nodes.Count - 1; i++)
+        {
             SplineNode n = nodes[i];
             SplineNode next = nodes[i + 1];
 
@@ -71,21 +74,26 @@ public class Spline : MonoBehaviour {
         UpdateAfterCurveChanged();
     }
 
-    public ReadOnlyCollection<CubicBezierCurve> GetCurves() {
+    public ReadOnlyCollection<CubicBezierCurve> GetCurves()
+    {
         return curves.AsReadOnly();
     }
 
-    private void RaiseNodeCountChanged() {
+    private void RaiseNodeCountChanged()
+    {
         if (NodeCountChanged != null)
             NodeCountChanged.Invoke();
     }
 
-    private void UpdateAfterCurveChanged() {
+    private void UpdateAfterCurveChanged()
+    {
         Length = 0;
-        foreach (var curve in curves) {
+        foreach (var curve in curves)
+        {
             Length += curve.Length;
         }
-        if (CurveChanged != null) {
+        if (CurveChanged != null)
+        {
             CurveChanged.Invoke();
         }
     }
@@ -112,9 +120,11 @@ public class Spline : MonoBehaviour {
         return curves[index].GetTangent(t - index);
     }
 
-    private int GetNodeIndexForTime(float t) {
-        if (t < 0 || t > nodes.Count - 1) {
-            throw new ArgumentException(string.Format("Time must be between 0 and last node index ({0}). Given time was {1}.", nodes.Count-1, t));
+    private int GetNodeIndexForTime(float t)
+    {
+        if (t < 0 || t > nodes.Count - 1)
+        {
+            throw new ArgumentException(string.Format("Time must be between 0 and last node index ({0}). Given time was {1}.", nodes.Count - 1, t));
         }
         int res = Mathf.FloorToInt(t);
         if (res == nodes.Count - 1)
@@ -127,13 +137,18 @@ public class Spline : MonoBehaviour {
     /// </summary>
     /// <param name="d"></param>
     /// <returns></returns>
-    public Vector3 GetLocationAlongSplineAtDistance(float d) {
-        if(d < 0 || d > Length)
+    public Vector3 GetLocationAlongSplineAtDistance(float d)
+    {
+        if (d < 0 || d > Length)
             throw new ArgumentException(string.Format("Distance must be between 0 and spline length ({0}). Given distance was {1}.", Length, d));
-        foreach (CubicBezierCurve curve in curves) {
-            if (d > curve.Length) {
+        foreach (CubicBezierCurve curve in curves)
+        {
+            if (d > curve.Length)
+            {
                 d -= curve.Length;
-            } else {
+            }
+            else
+            {
                 return curve.GetLocationAtDistance(d);
             }
         }
@@ -145,13 +160,18 @@ public class Spline : MonoBehaviour {
     /// </summary>
     /// <param name="d"></param>
     /// <returns></returns>
-    public Vector3 GetTangentAlongSplineAtDistance(float d) {
+    public Vector3 GetTangentAlongSplineAtDistance(float d)
+    {
         if (d < 0 || d > Length)
             throw new ArgumentException(string.Format("Distance must be between 0 and spline length ({0}). Given distance was {1}.", Length, d));
-        foreach (CubicBezierCurve curve in curves) {
-            if (d > curve.Length) {
+        foreach (CubicBezierCurve curve in curves)
+        {
+            if (d > curve.Length)
+            {
                 d -= curve.Length;
-            } else {
+            }
+            else
+            {
                 return curve.GetTangentAtDistance(d);
             }
         }
@@ -165,8 +185,9 @@ public class Spline : MonoBehaviour {
     public void AddNode(SplineNode node)
     {
         nodes.Add(node);
-        if (nodes.Count != 1) {
-            SplineNode previousNode = nodes[nodes.IndexOf(node)-1];
+        if (nodes.Count != 1)
+        {
+            SplineNode previousNode = nodes[nodes.IndexOf(node) - 1];
             CubicBezierCurve curve = new CubicBezierCurve(previousNode, node);
             curve.Changed.AddListener(() => UpdateAfterCurveChanged());
             curves.Add(curve);
@@ -189,8 +210,8 @@ public class Spline : MonoBehaviour {
         SplineNode nextNode = nodes[index];
 
         nodes.Insert(index, node);
-        
-        curves[index-1].ConnectEnd(node);
+
+        curves[index - 1].ConnectEnd(node);
 
         CubicBezierCurve curve = new CubicBezierCurve(node, nextNode);
         curve.Changed.AddListener(() => UpdateAfterCurveChanged());
@@ -207,12 +228,14 @@ public class Spline : MonoBehaviour {
     {
         int index = nodes.IndexOf(node);
 
-        if(nodes.Count <= 2) {
+        if (nodes.Count <= 2)
+        {
             throw new Exception("Can't remove the node because a spline needs at least 2 nodes.");
         }
 
-        CubicBezierCurve toRemove = index == nodes.Count - 1? curves[index - 1] : curves[index];
-        if (index != 0 && index != nodes.Count - 1) {
+        CubicBezierCurve toRemove = index == nodes.Count - 1 ? curves[index - 1] : curves[index];
+        if (index != 0 && index != nodes.Count - 1)
+        {
             SplineNode nextNode = nodes[index + 1];
             curves[index - 1].ConnectEnd(nextNode);
         }

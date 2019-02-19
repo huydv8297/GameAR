@@ -26,17 +26,17 @@ public class CustomCursor : MonoBehaviour {
 
     public static void OnMouseClickDown()
     {
-        if(buttonOnClick != null)
-            buttonOnClick.OnClickDown();
         isClick = true;
+        if (buttonOnClick != null)
+            buttonOnClick.OnClickDown();
+        
     }
 
     public static void OnMouseClickUp()
     {
+       // isClick = false;
         if (buttonOnClick != null)
-            buttonOnClick.OnClickUp();
-
-        isClick = false;
+            buttonOnClick.OnClickUp();        
     }
 
     public static bool HitTransform(Transform transform)
@@ -53,6 +53,18 @@ public class CustomCursor : MonoBehaviour {
         foreach(var hit in hits)
         {
             if (hit.transform == transform)
+                return true;
+        }
+        return false;
+    }
+
+    public static bool HitAllTag(string tag)
+    {
+        if (hits == null)
+            return false;
+        foreach (var hit in hits)
+        {
+            if (hit.transform.tag == tag)
                 return true;
         }
         return false;
