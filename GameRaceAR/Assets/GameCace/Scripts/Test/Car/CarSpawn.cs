@@ -12,10 +12,6 @@ public class CarSpawn : MonoBehaviour
     public GameObject npcPrefab;
     public GameObject policePrefab;
     public Vector3 postionSpawn;
-    private void Awake()
-    {
-        
-    }
 
     public void OnClickDown()
     {
@@ -26,13 +22,16 @@ public class CarSpawn : MonoBehaviour
             //player.transform.parent = transform;
             GameObject npc = Instantiate(npcPrefab, postionSpawn, Quaternion.identity);
             npc.transform.parent = transform;
+            npc.transform.LookAt(flagContainer.transform.GetChild(1));
             npc.GetComponent<AICarTest>().pathground = flagContainer;
             npc.GetComponent<AICarTest>().Play();
-            LogController.log.text = "INsctanc car";
+            LogController.log.text = "Instance car";
 
+            GameObject player = Instantiate(playerPrefab, postionSpawn + new Vector3(0.5f, 0f, 0.5f), Quaternion.identity);
+            player.transform.parent = transform;
+            npc.transform.LookAt(flagContainer.transform.GetChild(1));
         }
     }
-
 
     private void Update()
     {

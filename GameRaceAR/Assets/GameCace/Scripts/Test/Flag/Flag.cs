@@ -19,39 +19,39 @@ public class Flag : MonoBehaviour
         {
             Debug.Log("Add flag");
             LogController.log.text = "Add flag";
-            flags.Add(curentFlag);
-            curentFlag = null;
+            //flags.Add(curentFlag);
+            if (isSetable)
+            {
+                curentFlag = Instantiate(flagPrefab, transform);
+                curentFlag.GetComponent<CheckArea>().SetRedStatus();
+            }
         }
-        else if(isCreate.isOn)
+        else 
         {
             LogController.log.text = "else Add flag";
-            curentFlag = null;
-
-        }
-        else
-        {
-            if (curentFlag != null)
-                Destroy(curentFlag);
+            isSetable = false;
+            
             curentFlag = null;
             return;
         }
+       
     }
-
 
     private void Update()
     {
-        if (!isCreate.isOn)
-        {
-            return;
-        }
+        
+      
 
-        if (!CustomCursor.HitAllTag("control") &&  CustomCursor.isClick)
+        if (CustomCursor.isClick)
         {
             OnClickDown();
             CustomCursor.isClick = false;
         }
 
-        
+        if (!isCreate.isOn)
+        {
+            return;
+        }
 
         RaycastHit hit;
         Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
@@ -59,6 +59,7 @@ public class Flag : MonoBehaviour
         {
 
             Debug.DrawRay(ray.origin, ray.direction * Mathf.Infinity, Color.red, Mathf.Infinity);
+
             if (hit.transform.CompareTag("road"))
             {
                 isSetable = true;
@@ -66,21 +67,21 @@ public class Flag : MonoBehaviour
             }
             else
             {
+                isSetable = false;
                 curentFlag.GetComponent<CheckArea>().SetRedStatus();
             }
-
-            if (isSetable)
-            {
-                curentFlag = Instantiate(flagPrefab, transform);
-                curentFlag.GetComponent<CheckArea>().SetRedStatus();
-            }
-            else
+            
+            if (curentFlag != null)
             {
                 Vector3 newPos = hit.point;
                 curentFlag.transform.position = newPos + new Vector3(0, 1f, 0);
             }
-
-            
         }
+    }
+
+    public void OnFlagDisalbe()
+    {
+        if (!isCreate.isOn && curentFlag != null)
+            Destroy(curentFlag);
     }
 }

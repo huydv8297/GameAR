@@ -263,7 +263,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1425417772498324}
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -5.94, y: -53, z: 21.3}
+  m_LocalPosition: {x: -3.0293055, y: -54, z: 3.8692951}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4740722605257918}
@@ -813,8 +813,8 @@ MonoBehaviour:
   rearleftT: {fileID: 4136222225018266}
   rearrightT: {fileID: 4909562309256140}
   currentPathObj: 0
-  distFromPath: 3
-  maxTorque: 120
+  distFromPath: 15
+  maxTorque: 300
   currentSpeed: 0
   topSpeed: 140
   decelerationSpeed: 25
@@ -823,7 +823,7 @@ MonoBehaviour:
   _navMeshAgent: {fileID: 195001203311660106}
   steerVector: {x: 0, y: 0, z: 0}
   nextPosition: {x: 0, y: 0, z: 0}
-  distance: 0
+  distance: 5
   distanceStop: 1
   Checkdistance: 0
   interceptor: {fileID: 0}
@@ -952,7 +952,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 50
   m_Acceleration: 100
   avoidancePriority: 1
   m_AngularSpeed: 120

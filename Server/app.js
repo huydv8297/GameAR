@@ -98,7 +98,10 @@ io.on('connection', function(socket){
 						Response('Error', socket, ' full');
 					}
 				}
-				break;	
+				break;
+			case "OnMove":
+				Response('OnMove', socket, data.msg);
+				break;
 			default:
 				console.log('Respone');
 				Response(data.code, socket, data.id);

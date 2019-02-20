@@ -45,11 +45,23 @@ public class CarTest : MonoBehaviour {
     // Use this for initialization
     void Start () {
         rb = GetComponent<Rigidbody>();
-        Input.gyro.enabled = true;
+
+        SocketController.OnMove += OnMove;
+
+        //Input.gyro.enabled = true;
+
         //audiocar = GetComponent<AudioSource>();
 
     }
 	
+    void OnMove(Data data)
+    {
+        string[] temp = data.msg.Split(';');
+        moveHorizontal = int.Parse(temp[0]);
+        moveVertical = int.Parse(temp[1]);
+        LogController.log.text = data.msg;
+    }
+
 	// Update is called once per frame
 	void Update () {
         //Quaternion dev = DeviceRotation.Get();
@@ -67,10 +79,9 @@ public class CarTest : MonoBehaviour {
         //rb.AddForce(tilt);
         //textt.text = "tilt: " + tilt.ToString();
 
-
-        Gyroscope gyro = Input.gyro;
-        moveHorizontal = gyro.gravity.x;
-        moveVertical = gyro.gravity.y;
+        //Gyroscope gyro = Input.gyro;
+        //moveHorizontal = gyro.gravity.x;
+        //moveVertical = gyro.gravity.y;
         control();
     }
 

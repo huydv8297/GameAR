@@ -53,10 +53,13 @@ public class AICarTest : MonoBehaviour {
     {
         Transform[] path_objs = pathground.GetComponentsInChildren<Transform>();
 
-        foreach (Transform path_obj in path_objs)
+        for (int i = 0; i < path_objs.Length; i++)
         {
-            if (path_obj != pathground)
-                path.Add(path_obj);
+            if (i == 0)
+                continue;
+
+            if (path_objs[i] != pathground)
+                path.Add(path_objs[i]);
 
         }
 
