@@ -135,17 +135,14 @@ namespace GoogleARCore.Examples.CloudAnchors
             }
 
             // If the player has not touched the screen then the update is complete.
-            Touch touch;
-            if (Input.touchCount < 1 || (touch = Input.GetTouch(0)).phase != TouchPhase.Began)
-            {
+            if (!Input.GetMouseButtonDown(0))
                 return;
-            }
 
             // Raycast against the location the player touched to search for planes.
             if (Application.platform != RuntimePlatform.IPhonePlayer)
             {
                 TrackableHit hit;
-                if (ARCoreWorldOriginHelper.Raycast(touch.position.x, touch.position.y,
+                if (ARCoreWorldOriginHelper.Raycast(0.5f, 0.5f,
                         TrackableHitFlags.PlaneWithinPolygon, out hit))
                 {
                     m_LastPlacedAnchor = hit.Trackable.CreateAnchor(hit.Pose);
@@ -154,7 +151,7 @@ namespace GoogleARCore.Examples.CloudAnchors
             else
             {
                 Pose hitPose;
-                if (m_ARKit.RaycastPlane(ARKitFirstPersonCamera, touch.position.x, touch.position.y, out hitPose))
+                if (m_ARKit.RaycastPlane(ARKitFirstPersonCamera, 0.5f,0.5f, out hitPose))
                 {
                     m_LastPlacedAnchor = m_ARKit.CreateAnchor(hitPose);
                 }
@@ -167,7 +164,8 @@ namespace GoogleARCore.Examples.CloudAnchors
                 // instantiate a star, both in Hosting and Resolving modes.
                 if (_CanPlaceStars())
                 {
-                    _InstantiateStar();
+                    RoadManager.createRoadok = true;
+                    //GameObject.Find("LocalPlayer").GetComponent<LocalPlayerController>().CmdCreateRoad(m_LastPlacedAnchor.transform.position, m_LastPlacedAnchor.transform.rotation);
                 }
                 else if (!m_IsOriginPlaced && m_CurrentMode == ApplicationMode.Hosting)
                 {
@@ -175,7 +173,9 @@ namespace GoogleARCore.Examples.CloudAnchors
                     _InstantiateAnchor();
                     OnAnchorInstantiated(true);
                 }
+                
             }
+           
         }
 
         /// <summary>
@@ -294,6 +294,7 @@ namespace GoogleARCore.Examples.CloudAnchors
                       .CmdSpawnStar(m_LastPlacedAnchor.transform.position, m_LastPlacedAnchor.transform.rotation);
         }
 
+       
         /// <summary>
         /// Sets the corresponding platform active.
         /// </summary>
@@ -417,5 +418,7 @@ namespace GoogleARCore.Examples.CloudAnchors
                 }));
             }
         }
+      
     }
+
 }

@@ -7,6 +7,7 @@ using UnityEngine.UI;
 using GoogleARCore;
 using System;
 using System.IO;
+using UnityEngine.Networking;
 
 public class RoadManager : MonoBehaviour, CursorEvent
 {
@@ -25,6 +26,7 @@ public class RoadManager : MonoBehaviour, CursorEvent
     public Toggle road, bridge, river, flag, car;
     public float heightRoad = 0f;
     public Text log;
+    public static bool createRoadok=false;
 
     private List<DetectedPlane> m_AllPlanes = new List<DetectedPlane>();
     private bool m_IsQuitting = false;
@@ -102,7 +104,7 @@ public class RoadManager : MonoBehaviour, CursorEvent
             isCreate = false;
         }
 
-        if (isCreate)
+        if (isCreate&& createRoadok)
             OnMouseDrag();
     }
 
@@ -153,7 +155,7 @@ public class RoadManager : MonoBehaviour, CursorEvent
             if (spline == null)
             {
                 GameObject newSpline = Instantiate(roadGeneretorPrefab, Vector3.zero, Quaternion.identity) as GameObject;
-
+                NetworkServer.Spawn(newSpline);
                 newSpline.transform.parent = Container.Instance.transform;
                 spline = newSpline.GetComponent<Spline>();
                 splines.Add(spline);
