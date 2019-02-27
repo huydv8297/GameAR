@@ -61,8 +61,7 @@ MonoBehaviour:
   lastNode:
     position: {x: 0, y: 0, z: 0}
     direction: {x: 0, y: 0, z: 0}
-  position: {x: 0, y: 0, z: 0}
-  space: 30
+  space: 0.5
 --- !u!114 &114909607304245616
 MonoBehaviour:
   m_ObjectHideFlags: 1

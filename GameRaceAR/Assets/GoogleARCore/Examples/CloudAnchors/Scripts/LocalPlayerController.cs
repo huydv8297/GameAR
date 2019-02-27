@@ -43,8 +43,7 @@ namespace GoogleARCore.Examples.CloudAnchors
         public Spline spline;
         public List<Spline> splines = new List<Spline>();
         public SplineNode lastNode;
-        public Vector3 position;
-        public float space = 30f;
+        float space = 0.1f;
         /// <summary>
         /// The Unity OnStartLocalPlayer() method.
         /// </summary>
@@ -89,15 +88,16 @@ namespace GoogleARCore.Examples.CloudAnchors
             // Spawn the object in all clients.
             NetworkServer.Spawn(starObject);
         }
-        [Command]
+       [Command]
         public void CmdCreateRoad(Vector3 position, Quaternion rotation)
         {
-       
+
+        
             if (spline == null)
             {
                 GameObject newSpline = Instantiate(roadPrefab, position, rotation) as GameObject;
                 NetworkServer.Spawn(newSpline);
-            
+               // log.SetString("instantiate" + position);
                 spline = newSpline.GetComponent<Spline>();
                 splines.Add(spline);
                 spline.nodes[0].position = position;
@@ -109,30 +109,34 @@ namespace GoogleARCore.Examples.CloudAnchors
             }
             else
             {
+               // log.SetString("else 1");
                 lastNode = spline.nodes.LastOrDefault();
 
                 float distance = Vector3.Distance(lastNode.position, position);
 
                 if (distance < space)
+                {
+                   log.SetString("else hai"+distance + "spcace" + space);
                     return;
+                }
+                    
                 else
                 {
                     float count = distance / space;
-
+                   // log.SetString("else 3");
                     for (float i = 1; i < count; i++)
                     {
                         Vector3 _position = GetPoint(lastNode.position, position, i / count);
-
+                       log.SetString("else" +_position);
                         AddNode(_position);
 
 
                     }
                 }
-
+               // log.SetString("instantiate1");
 
             }
         }
-       
 
 
 
@@ -142,7 +146,10 @@ namespace GoogleARCore.Examples.CloudAnchors
             return (start + percent * (end - start));
         }
 
-
+        public void SetTag()
+        {
+            spline = null;
+        }
 
         void AddNode(Vector3 position)
         {

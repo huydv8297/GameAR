@@ -22,6 +22,7 @@ namespace GoogleARCore.Examples.CloudAnchors
 {
     using GoogleARCore;
     using UnityEngine;
+    using UnityEngine.EventSystems;
 
     /// <summary>
     /// Controller for the Cloud Anchors Example. Handles the ARCore lifecycle.
@@ -44,6 +45,10 @@ namespace GoogleARCore.Examples.CloudAnchors
         /// The helper that will calculate the World Origin offset when performing a raycast or generating planes.
         /// </summary>
         public ARCoreWorldOriginHelper ARCoreWorldOriginHelper;
+        private bool createRoad=false;
+        private bool isCreate = false;
+        public Vector3 position;
+
 
         [Header("ARKit")]
 
@@ -135,14 +140,17 @@ namespace GoogleARCore.Examples.CloudAnchors
             }
 
             // If the player has not touched the screen then the update is complete.
-            if (!Input.GetMouseButtonDown(0))
-                return;
-
+            Touch touch = Input.GetTouch(0);
+            if (Input.touchCount < 1 || (touch = Input.GetTouch(0)).phase != TouchPhase.Began)
+            {
+               // return;
+            }
+        
             // Raycast against the location the player touched to search for planes.
             if (Application.platform != RuntimePlatform.IPhonePlayer)
             {
                 TrackableHit hit;
-                if (ARCoreWorldOriginHelper.Raycast(0.5f, 0.5f,
+                if (ARCoreWorldOriginHelper.Raycast(touch.position.x, touch.position.y,
                         TrackableHitFlags.PlaneWithinPolygon, out hit))
                 {
                     m_LastPlacedAnchor = hit.Trackable.CreateAnchor(hit.Pose);
@@ -151,7 +159,7 @@ namespace GoogleARCore.Examples.CloudAnchors
             else
             {
                 Pose hitPose;
-                if (m_ARKit.RaycastPlane(ARKitFirstPersonCamera, 0.5f,0.5f, out hitPose))
+                if (m_ARKit.RaycastPlane(ARKitFirstPersonCamera, touch.position.x, touch.position.y, out hitPose))
                 {
                     m_LastPlacedAnchor = m_ARKit.CreateAnchor(hitPose);
                 }
@@ -164,8 +172,8 @@ namespace GoogleARCore.Examples.CloudAnchors
                 // instantiate a star, both in Hosting and Resolving modes.
                 if (_CanPlaceStars())
                 {
-                    RoadManager.createRoadok = true;
-                    //GameObject.Find("LocalPlayer").GetComponent<LocalPlayerController>().CmdCreateRoad(m_LastPlacedAnchor.transform.position, m_LastPlacedAnchor.transform.rotation);
+                    createRoad = true;
+                  
                 }
                 else if (!m_IsOriginPlaced && m_CurrentMode == ApplicationMode.Hosting)
                 {
@@ -173,9 +181,40 @@ namespace GoogleARCore.Examples.CloudAnchors
                     _InstantiateAnchor();
                     OnAnchorInstantiated(true);
                 }
-                
             }
-           
+            if (createRoad)
+            {
+             
+                if (Input.GetMouseButtonUp(0))
+                {
+
+                    log.SetString("up");
+                    isCreate = false;
+                    GameObject.Find("LocalPlayer").GetComponent<LocalPlayerController>().SetTag();
+
+                }
+                if(Input.GetMouseButtonDown(0))
+                {
+                    log.SetString("down");
+                    isCreate = true;
+                }
+            }
+            if (isCreate)
+            {
+
+                CheckRayRoad();
+            }
+        }
+        public void CheckRayRoad()
+        {
+            //position = CustomCursor.currentHit.point;
+            //position.x /= 50;
+            //position.y = 0;
+            //position.z /= 50;
+
+            GameObject.Find("LocalPlayer").GetComponent<LocalPlayerController>().CmdCreateRoad(m_LastPlacedAnchor.transform.position,m_LastPlacedAnchor.transform.rotation);
+            // log.SetString(position.ToString()+"m" + m_LastPlacedAnchor.transform.position.x.ToString());
+
         }
 
         /// <summary>
