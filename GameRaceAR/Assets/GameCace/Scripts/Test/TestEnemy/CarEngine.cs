@@ -76,18 +76,14 @@ public class CarEngine : MonoBehaviour {
         {
             Debug.DrawLine(sensorStarPos, hit.point);
         }
-       
-
-       
 
         //left
+
         sensorStarPos -= transform.right * frontsideSensorPosition * 2;
         if (Physics.Raycast(sensorStarPos, transform.forward, out hit, sensorLength))
         {
             Debug.DrawLine(sensorStarPos, hit.point);
         }
-
-      
 
         //left angle
         

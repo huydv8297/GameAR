@@ -30,7 +30,7 @@ public class AICarTest : MonoBehaviour {
     WheelFrictionCurve sFrictionL;
     WheelFrictionCurve fFrictionR;
     WheelFrictionCurve sFrictionR;
-    public InterceptorController interceptor;
+   
    
 
     void Start()
@@ -41,11 +41,9 @@ public class AICarTest : MonoBehaviour {
         _navMeshAgent.updatePosition = false;
         _navMeshAgent.updateRotation = false;
         nextPosition = transform.position;
-         
 
     }
     //
-
     void GetPath()
     {
         Transform[] path_objs = pathground.GetComponentsInChildren<Transform>();
@@ -54,9 +52,7 @@ public class AICarTest : MonoBehaviour {
         {
             if (path_obj != pathground)
                 path.Add(path_obj);
-
         }
-
 
     }
     void Update()
@@ -68,13 +64,9 @@ public class AICarTest : MonoBehaviour {
 
     public void MoveSpeedCar()
     {
-
         Move();
         CheckPath();
         GetSteer();
-
-        
-
     }
     public void CheckPath()
     {
@@ -95,18 +87,10 @@ public class AICarTest : MonoBehaviour {
         }
     }
 
-    //private IEnumerator WaitAndPrint()
-    //{
-       
-    //    yield return new WaitForSeconds(5);
-    //    interceptor.checkpath();
-
-    //}
+  
 
     void GetSteer()
     {
-
-        // Vector3 steerVector = transform.InverseTransformPoint(new Vector3(_navMeshAgent.nextPosition.x, transform.position.y, _navMeshAgent.nextPosition.z));
 
         Checkdistance = Vector3.Distance(_navMeshAgent.nextPosition, transform.position);
         _navMeshAgent.SetDestination(steerVector);
@@ -164,7 +148,6 @@ public class AICarTest : MonoBehaviour {
         currentSpeed = 2 * 22 / 7 * wheelRL.radius * wheelRL.rpm * 60 / 1000;
 
         currentSpeed = Mathf.Round(currentSpeed);
-        //currentSpeed = Mathf.MoveTowards(currentSpeed, 128, 1 * Time.deltaTime);
         if (currentSpeed <= topSpeed)
         {
             wheelRL.motorTorque = maxTorque;
@@ -184,7 +167,6 @@ public class AICarTest : MonoBehaviour {
 
     private void UpdateWheelPoses()
     {
-
         UpdatewheelPose(wheelFL, frontleftT);
         UpdatewheelPose(wheelFR, frontrightT);
         UpdatewheelPose(wheelRL, rearleftT);

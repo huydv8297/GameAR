@@ -11,7 +11,7 @@ public class CarTest : MonoBehaviour {
     private float speed = 20f;
     
     private Rigidbody rb;
-    public Text textH, textV;
+    
     private float m_motorFprce;
 
     public float motorFprce = 50;
