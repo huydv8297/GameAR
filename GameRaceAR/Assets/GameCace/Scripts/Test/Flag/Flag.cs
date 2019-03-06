@@ -1,6 +1,4 @@
-﻿using GoogleARCore;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -34,14 +32,10 @@ public class Flag : MonoBehaviour
             curentFlag = null;
             return;
         }
-       
     }
 
     private void Update()
     {
-        
-      
-
         if (CustomCursor.isClick)
         {
             OnClickDown();

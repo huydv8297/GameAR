@@ -13,28 +13,38 @@ public class CarSpawn : MonoBehaviour
     public GameObject policePrefab;
     public Vector3 postionSpawn;
 
+    public float space;
+    int count;
+    float width;
     public void OnClickDown()
     {
        if(flagContainer.childCount != 0)
         {
+            transform.LookAt(flagContainer.transform.GetChild(1).position);
             postionSpawn = flagContainer.transform.GetChild(0).position;
-            //GameObject player = Instantiate(playerPrefab, postionSpawn, Quaternion.identity);
-            //player.transform.parent = transform;
+
             GameObject npc = Instantiate(npcPrefab, postionSpawn, Quaternion.identity);
             npc.transform.parent = transform;
-            npc.transform.LookAt(flagContainer.transform.GetChild(1));
             npc.GetComponent<AICarTest>().pathground = flagContainer;
             npc.GetComponent<AICarTest>().Play();
-            LogController.log.text = "Instance car";
-
-            GameObject player = Instantiate(playerPrefab, postionSpawn + new Vector3(0.5f, 0f, 0.5f), Quaternion.identity);
+            
+            GameObject player = Instantiate(playerPrefab, postionSpawn, Quaternion.identity);
             player.transform.parent = transform;
-            npc.transform.LookAt(flagContainer.transform.GetChild(1));
+
+            //npc.transform.LookAt(flagContainer.transform.GetChild(1));
+            //player.transform.LookAt(flagContainer.transform.GetChild(1));
+
+            SpawnCar(npc);
+            SpawnCar(player);
+            LogController.log.text = "Instance car";
         }
     }
 
-    private void Update()
+    public void SpawnCar(GameObject car)
     {
-        
+        count++;
+        car.transform.rotation = transform.rotation;
+        car.transform.position +=  new Vector3(width + space * count, 0, 0);
+        width += car.GetComponent<BoxCollider>().bounds.size.x;
     }
 }

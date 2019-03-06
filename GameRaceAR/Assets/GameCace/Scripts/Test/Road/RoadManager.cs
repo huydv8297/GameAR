@@ -133,15 +133,6 @@ public class RoadManager : MonoBehaviour, CursorEvent
 
     void CreateRoad()
     {
-
-        //RaycastHit hit;
-        //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        //Debug.DrawRay(ray.origin, ray.direction * Mathf.Infinity, Color.red, Mathf.Infinity);
-        //if (Physics.Raycast(ray, out hit, Mathf.Infinity))
-        //{
-
-        //    if (hit.transform.CompareTag("wall"))
-        //        return;
         if(CustomCursor.HitTransform(transform))
         { 
 
@@ -152,7 +143,7 @@ public class RoadManager : MonoBehaviour, CursorEvent
 
             if (spline == null)
             {
-                GameObject newSpline = Instantiate(roadGeneretorPrefab, Vector3.zero, Quaternion.identity) as GameObject;
+                GameObject newSpline = Instantiate(roadGeneretorPrefab, new Vector3(0 , 0.02f, 0), Quaternion.identity) as GameObject;
 
                 newSpline.transform.parent = Container.Instance.transform;
                 spline = newSpline.GetComponent<Spline>();
@@ -274,61 +265,29 @@ public class RoadManager : MonoBehaviour, CursorEvent
 
     public void SaveRoad()
     {
-        RoadData roadData = new RoadData();
-        roadData.position = new Vector3[splines[0].nodes.Count];
-        roadData.direction = new Vector3[splines[0].nodes.Count];
-        for (int i = 0; i < spline.nodes.Count; i++ )
-        {
-            roadData.position[i] = spline.nodes[i].position;
-            roadData.direction[i] = spline.nodes[i].direction;
-        }
-        string dataAsJson = JsonUtility.ToJson(roadData);
-        string filePath = Application.dataPath + gameDataProjectFilePath;
-        File.WriteAllText(filePath, dataAsJson);
+        
     }
-    public string gameDataProjectFilePath = "/Data/road.json";
-    public RoadData roadData;
 
-    public void LoadData()
-    {
-        string filePath = Application.dataPath + gameDataProjectFilePath;
 
-        if (File.Exists(filePath))
-        {
-            string dataAsJson = File.ReadAllText(filePath);
-            roadData = JsonUtility.FromJson<RoadData>(dataAsJson);
+    //public void LoadData(List<RoadData> roads)
+    //{
+    //    for(int i = 0;  i < roads.Count; i++)
+    //    {
+    //        GameObject newSpline = Instantiate(roadGeneretorPrefab, new Vector3(0, 0.02f, 0), Quaternion.identity) as GameObject;
 
-            GameObject newSpline = Instantiate(roadGeneretorPrefab, Container.Instance.transform) as GameObject;
-            newSpline.transform.parent = Container.Instance.transform;
-            Spline spline = newSpline.GetComponent<Spline>();
-            splines.Add(spline);
-            SplineNode node0 = new SplineNode(roadData.position[0], roadData.direction[0]);
-            spline.nodes[0] = node0;
+    //        newSpline.transform.parent = Container.Instance.transform;
+    //        spline = newSpline.GetComponent<Spline>();
+    //        for()
+    //        spline.nodes[0].position = roads[;
+    //        spline.nodes[1].position = position;
 
-            SplineNode node1 = new SplineNode(roadData.position[1], roadData.direction[1]);
-            spline.nodes[1] = node1;
+    //        Vector3 firstDirection = GetPoint(spline.nodes[0].position, spline.nodes[1].position, 0.1f);
+    //        spline.nodes[0].direction = firstDirection;
+    //        spline.nodes[1].direction = firstDirection;
+    //    }
 
-            for (int i = 2; i < roadData.position.Length; i++)
-            {
-                SplineNode node = new SplineNode(roadData.position[i], roadData.direction[i]);
-                spline.AddNode(node);
-            }
-
-        }
-        else
-        {
-        }
-
-    }
+    //}
 
     
+    
 }
-
-[Serializable]
-public class RoadData
-{
-    public Vector3[] position;
-    public Vector3[] direction;
-}
-
-

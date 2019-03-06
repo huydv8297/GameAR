@@ -649,6 +649,10 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1772147192650458, guid: c10877f7cd5764de18d46d7b777d1faa, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c10877f7cd5764de18d46d7b777d1faa, type: 2}
   m_IsPrefabAsset: 0
@@ -1800,8 +1804,8 @@ RectTransform:
   m_Father: {fileID: 583422312}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 34, y: 0}
   m_SizeDelta: {x: 1239, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2662,6 +2666,7 @@ GameObject:
   m_Component:
   - component: {fileID: 496450392}
   - component: {fileID: 496450391}
+  - component: {fileID: 496450393}
   m_Layer: 0
   m_Name: NetworkController
   m_TagString: Untagged
@@ -2706,6 +2711,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &496450393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 496450390}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bb54ce81345d4e49b38f74a83716491, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &542457521
 GameObject:
   m_ObjectHideFlags: 0
@@ -3382,7 +3398,8 @@ GameObject:
   m_Component:
   - component: {fileID: 627916102}
   - component: {fileID: 627916103}
-  - component: {fileID: 627916104}
+  - component: {fileID: 627916106}
+  - component: {fileID: 627916105}
   m_Layer: 0
   m_Name: Example Controller
   m_TagString: Untagged
@@ -3421,7 +3438,7 @@ MonoBehaviour:
   AndyPointPrefab: {fileID: 0}
   SearchingForPlaneUI: {fileID: 1133631540}
   isHaveCar: 0
---- !u!114 &627916104
+--- !u!114 &627916105
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3429,7 +3446,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 627916101}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39e09c9dbfda63d4aa5164bf2c766743, type: 3}
+  m_Script: {fileID: 11500000, guid: d723e5a7e2f87374ebf6b06305808ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  database: {fileID: 627916106}
+  roadManager: {fileID: 684795160}
+  houseSpawn: {fileID: 684795164}
+  currentMap: 0
+  listRoad: []
+  listHouse: []
+--- !u!114 &627916106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 627916101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bb54ce81345d4e49b38f74a83716491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &630298018
@@ -3746,7 +3780,13 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1327314236630624, guid: 56afe0a0dcb37ff43a4c575f54b066de,
     type: 2}
   m_PrefabInternal: {fileID: 1862115173}
---- !u!114 &684795159
+--- !u!114 &684795160 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114366713665101782, guid: 56afe0a0dcb37ff43a4c575f54b066de,
+    type: 2}
+  m_PrefabInternal: {fileID: 1862115173}
+  m_Script: {fileID: 11500000, guid: 34677669769a00745935d619894fe176, type: 3}
+--- !u!114 &684795164
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3754,9 +3794,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 684795158}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e038bf700cfa444fb16c6ef963be9f9, type: 3}
+  m_Script: {fileID: 11500000, guid: a19665318d5af354abb65d3a8633e940, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  housePrefab: {fileID: 1245693637589776, guid: f3fd4cd5c50dd0d40abdb0231fc34cf8,
+    type: 2}
+  isActive: {fileID: 1493400478}
+  isCreatale: 1
+  listHouse: []
 --- !u!1 &692877017
 GameObject:
   m_ObjectHideFlags: 0
@@ -3788,7 +3833,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4711,7 +4756,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Car
+  m_Text: House
 --- !u!222 &923992720
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4864,6 +4909,48 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 960770836}
   m_CullTransparentMesh: 0
+--- !u!1 &970800702
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 970800703}
+  - component: {fileID: 970800704}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &970800703
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 970800702}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1057728287}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &970800704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 970800702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 115dfe7b0938447cbbf9507076f54049, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Tracked: {fileID: 0}
+  m_Size: {x: 500, y: 500, z: 500}
 --- !u!1 &987345404
 GameObject:
   m_ObjectHideFlags: 0
@@ -5247,6 +5334,7 @@ Transform:
   - {fileID: 1862115175}
   - {fileID: 1942037122}
   - {fileID: 1937786325}
+  - {fileID: 970800703}
   m_Father: {fileID: 1280790078}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5697,7 +5785,7 @@ GameObject:
   - component: {fileID: 1157586144}
   - component: {fileID: 1157586143}
   m_Layer: 5
-  m_Name: Toggle (1)
+  m_Name: Flag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6648,7 +6736,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1280790078
 Transform:
   m_ObjectHideFlags: 0
@@ -6761,6 +6849,48 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1288278049}
   m_CullTransparentMesh: 0
+--- !u!1001 &1294643778
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4083843034536848, guid: f3fd4cd5c50dd0d40abdb0231fc34cf8, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 114.816536
+      objectReference: {fileID: 0}
+    - target: {fileID: 4083843034536848, guid: f3fd4cd5c50dd0d40abdb0231fc34cf8, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 314.4561
+      objectReference: {fileID: 0}
+    - target: {fileID: 4083843034536848, guid: f3fd4cd5c50dd0d40abdb0231fc34cf8, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -2230.3794
+      objectReference: {fileID: 0}
+    - target: {fileID: 4083843034536848, guid: f3fd4cd5c50dd0d40abdb0231fc34cf8, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4083843034536848, guid: f3fd4cd5c50dd0d40abdb0231fc34cf8, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4083843034536848, guid: f3fd4cd5c50dd0d40abdb0231fc34cf8, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4083843034536848, guid: f3fd4cd5c50dd0d40abdb0231fc34cf8, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4083843034536848, guid: f3fd4cd5c50dd0d40abdb0231fc34cf8, type: 2}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f3fd4cd5c50dd0d40abdb0231fc34cf8, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &1309580173
 GameObject:
   m_ObjectHideFlags: 0
@@ -7297,6 +7427,10 @@ Prefab:
     - target: {fileID: 4461716624848968, guid: cf498fc35b538884db557f7a9a2c0ef9, type: 2}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1248447649449928, guid: cf498fc35b538884db557f7a9a2c0ef9, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf498fc35b538884db557f7a9a2c0ef9, type: 2}
@@ -7891,8 +8025,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: SaveRoad
+      - m_Target: {fileID: 627916105}
+        m_MethodName: SaveData
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7973,7 +8107,7 @@ GameObject:
   - component: {fileID: 1493400480}
   - component: {fileID: 1493400479}
   m_Layer: 5
-  m_Name: Toggle (2)
+  m_Name: House
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8413,8 +8547,8 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1608144853}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 110}
+  m_LocalRotation: {x: -0.0055778325, y: -0, z: -0, w: 0.99998444}
+  m_LocalPosition: {x: 0, y: 0, z: 102}
   m_LocalScale: {x: 0.04, y: 0.04, z: 2}
   m_Children:
   - {fileID: 790408599}
@@ -8424,10 +8558,10 @@ RectTransform:
   - {fileID: 168084205}
   m_Father: {fileID: 1276483517}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -0.63900006, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -2, y: 22.4}
+  m_AnchoredPosition: {x: -0.7, y: 36.7}
   m_SizeDelta: {x: 420.6, y: 355.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1608144858
@@ -9502,7 +9636,7 @@ GameObject:
   - component: {fileID: 1770952153}
   - component: {fileID: 1770952154}
   m_Layer: 5
-  m_Name: Toggle
+  m_Name: Road
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10349,6 +10483,10 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4128313627901506, guid: 56afe0a0dcb37ff43a4c575f54b066de, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -81.6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 56afe0a0dcb37ff43a4c575f54b066de, type: 2}
   m_IsPrefabAsset: 0
@@ -10507,7 +10645,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1881835851}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.4, y: 2.5, z: 110}
+  m_LocalPosition: {x: 0.4, y: 35.9, z: 102}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 837225013}
@@ -10770,12 +10908,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flagContainer: {fileID: 1942037122}
-  playerPrefab: {fileID: 1489738648271386, guid: 22ad78431903f8f4c80f2ae27dd2d327,
+  playerPrefab: {fileID: 1041537282338142, guid: 22ad78431903f8f4c80f2ae27dd2d327,
     type: 2}
   npcPrefab: {fileID: 1425417772498324, guid: cef729057c494fb47a5297d0ecd8f517, type: 2}
   policePrefab: {fileID: 1624337252118902, guid: bc914d53a867f6147ad95894c9546e31,
     type: 2}
   postionSpawn: {x: 0, y: 0, z: 0}
+  space: 2
 --- !u!114 &1937786327
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11458,7 +11597,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2037718599}
   - component: {fileID: 2037718600}
-  - component: {fileID: 2037718601}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -11535,17 +11673,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &2037718601
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2037718598}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1050975500, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2039727475
 GameObject:
   m_ObjectHideFlags: 0

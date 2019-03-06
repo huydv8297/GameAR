@@ -6,7 +6,7 @@ using UnityEngine;
 public class CustomCursor : MonoBehaviour {
     public static RaycastHit currentHit;
     public static RaycastHit[] hits;
-    static CursorEvent buttonOnClick;
+    public static CursorEvent buttonOnClick;
     public static bool isClick;
     
     private void Update()
@@ -29,6 +29,7 @@ public class CustomCursor : MonoBehaviour {
         isClick = true;
         if (buttonOnClick != null)
             buttonOnClick.OnClickDown();
+                
         
     }
 
@@ -36,7 +37,7 @@ public class CustomCursor : MonoBehaviour {
     {
        // isClick = false;
         if (buttonOnClick != null)
-            buttonOnClick.OnClickUp();        
+            buttonOnClick.OnClickUp();
     }
 
     public static bool HitTransform(Transform transform)

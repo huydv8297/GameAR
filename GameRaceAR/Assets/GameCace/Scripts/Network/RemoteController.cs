@@ -12,11 +12,20 @@ public class RemoteController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+		if(Input.GetMouseButtonDown(0))
+        {
+            CustomCursor.OnMouseClickDown();
+        }
+
+        if (Input.GetMouseButtonUp(0))
+        {
+            CustomCursor.OnMouseClickUp();
+        }
+    }
 
     public void OnClickDown()
     {
+        
         CustomCursor.OnMouseClickDown();
     }
 

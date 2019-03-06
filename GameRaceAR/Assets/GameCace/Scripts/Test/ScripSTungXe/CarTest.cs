@@ -18,7 +18,7 @@ public class CarTest : MonoBehaviour {
     /// <summary>
     /// /////////////////////
     /// </summary>
-    private float moveHorizontal, moveVertical;
+    public float moveHorizontal, moveVertical;
     private float m_steeringAngle;
     public float maxSteerAngle = 30;
 
@@ -57,10 +57,13 @@ public class CarTest : MonoBehaviour {
     void OnMove(Data data)
     {
         string[] temp = data.msg.Split(';');
-        moveHorizontal = int.Parse(temp[0]);
-        moveVertical = int.Parse(temp[1]);
-        LogController.log.text = data.msg;
+        moveHorizontal = float.Parse(temp[0]);
+        moveVertical = float.Parse(temp[1]);
+        //LogController.log.text = data.msg;
+        Debug.Log(moveHorizontal + "; " + moveHorizontal);
     }
+
+
 
 	// Update is called once per frame
 	void Update () {
@@ -146,7 +149,7 @@ public class CarTest : MonoBehaviour {
         }
 
         var currentSteerAngle = 20 * moveHorizontal;
-        Debug.Log(currentSteerAngle);
+
         frontrightW.steerAngle = currentSteerAngle;
         frontleftW.steerAngle = currentSteerAngle;
         

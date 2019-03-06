@@ -14,4 +14,9 @@ public class LogController : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    public static void Log(string msg)
+    {
+        log.text = msg;
+    }
 }

@@ -10,7 +10,7 @@ public class CarController : MonoBehaviour {
     
 
     // Update is called once per frame
-    void Update () {
+    void aUpdate () {
         Gyroscope gyro = Input.gyro;
         moveHorizontal = gyro.gravity.x;
         moveVertical = gyro.gravity.y;

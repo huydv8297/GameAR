@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class AICarTest : MonoBehaviour {
+public class AICarTest : MonoBehaviour
+{
 
     public Vector3 centerOfMash;
     public List<Transform> path;
@@ -35,7 +36,7 @@ public class AICarTest : MonoBehaviour {
 
     void Start()
     {
-        
+
     }
 
     public void Play()
@@ -43,8 +44,9 @@ public class AICarTest : MonoBehaviour {
         isPlay = true;
         rigidbody = GetComponent<Rigidbody>();
         rigidbody.centerOfMass = centerOfMash;
-        _navMeshAgent.updatePosition = false;
         GetPath();
+        _navMeshAgent.updatePosition = false;
+
         _navMeshAgent.updateRotation = false;
         nextPosition = transform.position;
     }
@@ -57,37 +59,29 @@ public class AICarTest : MonoBehaviour {
         {
             if (i == 0)
                 continue;
-
             if (path_objs[i] != pathground)
                 path.Add(path_objs[i]);
-
         }
-
-
     }
+
     void Update()
-    {   
-        if(isPlay)
+    {
+        if (isPlay)
         {
             MoveSpeedCar();
             UpdateWheelPoses();
         }
-        
     }
 
     public void MoveSpeedCar()
     {
-
         Move();
         CheckPath();
         GetSteer();
-
-        
-
     }
+
     public void CheckPath()
     {
-        
         distance = Vector3.Distance(transform.position, steerVector);
         if (distance <= distFromPath)
         {
@@ -106,7 +100,7 @@ public class AICarTest : MonoBehaviour {
 
     //private IEnumerator WaitAndPrint()
     //{
-       
+
     //    yield return new WaitForSeconds(5);
     //    interceptor.checkpath();
 
@@ -118,6 +112,7 @@ public class AICarTest : MonoBehaviour {
         // Vector3 steerVector = transform.InverseTransformPoint(new Vector3(_navMeshAgent.nextPosition.x, transform.position.y, _navMeshAgent.nextPosition.z));
 
         Checkdistance = Vector3.Distance(_navMeshAgent.nextPosition, transform.position);
+
         _navMeshAgent.SetDestination(steerVector);
         fFrictionL = wheelRL.forwardFriction;
         sFrictionL = wheelRL.sidewaysFriction;
@@ -125,20 +120,19 @@ public class AICarTest : MonoBehaviour {
         sFrictionR = wheelRR.sidewaysFriction;
         if (Checkdistance < distanceStop)
         {
-            
             fFrictionL.stiffness = 0.01f;
             sFrictionL.stiffness = 0.01f;
 
             wheelRL.forwardFriction = fFrictionL;
             wheelRL.sidewaysFriction = sFrictionL;
 
-            
+
             fFrictionR.stiffness = 0.01f;
             sFrictionR.stiffness = 0.01f;
-           
+
             wheelRR.forwardFriction = fFrictionR;
-           
-            
+
+
             wheelRR.sidewaysFriction = sFrictionR;
         }
         else
@@ -156,7 +150,7 @@ public class AICarTest : MonoBehaviour {
             wheelRR.sidewaysFriction = sFrictionR;
         }
 
-        
+
         nextPosition = transform.InverseTransformPoint(_navMeshAgent.nextPosition);
 
         float newSteer = maxSteer * (nextPosition.x / nextPosition.magnitude);
@@ -164,8 +158,6 @@ public class AICarTest : MonoBehaviour {
         wheelFL.steerAngle = newSteer;
         wheelFR.steerAngle = newSteer;
         Debug.Log(newSteer);
-
-       
     }
 
     void Move()
