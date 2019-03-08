@@ -155,8 +155,8 @@ namespace GoogleARCore.Examples.CloudAnchors
             {
                 if (result.Response != CloudServiceResponse.Success)
                 {
-                    Debug.LogError(string.Format("Client could not resolve Cloud Anchor {0}: {1}",
-                                                 cloudAnchorId, result.Response));
+                   // Debug.LogError(string.Format("Client could not resolve Cloud Anchor {0}: {1}",
+                                                 //cloudAnchorId, result.Response));
 
                     m_CloudAnchorsExampleController.OnAnchorResolved(false, result.Response.ToString());
                     m_ShouldResolve = true;

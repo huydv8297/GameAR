@@ -1,8 +1,10 @@
-﻿using System;
+﻿using GoogleARCore.Examples.CloudAnchors;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Networking;
 /// <summary>
 /// Exemple of component to bend a mesh along a spline with an offset.
 /// 
@@ -16,7 +18,8 @@ using UnityEngine.AI;
 /// </summary>
 [ExecuteInEditMode]
 [SelectionBase]
-public class ExempleRailling : MonoBehaviour {
+public class ExempleRailling : MonoBehaviour
+{
 
     public Mesh mesh;
     public Material material;
@@ -25,14 +28,15 @@ public class ExempleRailling : MonoBehaviour {
     public float ZOffset;
     public float scale = 1;
     public Vector3 meshScale = Vector3.one;
-
+    bool done = true;
     private Spline spline = null;
     public List<GameObject> meshes = new List<GameObject>();
     private bool toUpdate = true;
-
+    LocalPlayerController Local;
     private void OnEnable() {
         spline = GetComponent<Spline>();
         spline.NodeCountChanged.AddListener(() => toUpdate = true);
+     
     }
 
     private void OnValidate() {
@@ -47,6 +51,12 @@ public class ExempleRailling : MonoBehaviour {
     }
 
     public void CreateMeshes() {
+        if (done)
+        {
+            Local = GameObject.Find("LocalPlayer").GetComponent<LocalPlayerController>();
+            done = false;
+        }
+
         foreach (GameObject go in meshes) {
             if (gameObject != null) {
                 if (Application.isPlaying) {
@@ -59,17 +69,16 @@ public class ExempleRailling : MonoBehaviour {
         meshes.Clear();
 
         int i = 0;
-        foreach (CubicBezierCurve curve in spline.GetCurves()) {
+        foreach (CubicBezierCurve curve in spline.GetCurves())
+        {
             GameObject go = new GameObject("SplineMesh" + i++, typeof(MeshFilter), typeof(MeshRenderer), typeof(MeshBender), typeof(MeshCollider));
             go.transform.parent = transform;
             go.transform.localRotation = Quaternion.identity;
             go.transform.localPosition = Vector3.zero;
             go.transform.localScale = meshScale;
-            //go.hideFlags = HideFlags.NotEditable;
-
             go.GetComponent<MeshRenderer>().material = material;
-            
             MeshBender mb = go.GetComponent<MeshBender>();
+            go.AddComponent<NetworkIdentity>();
             mb.SetSourceMesh(mesh, false);
             go.AddComponent<NavMeshSourceTag>();
             mb.SetRotation(Quaternion.Euler(rotation), false);
@@ -78,6 +87,7 @@ public class ExempleRailling : MonoBehaviour {
             mb.SetStartScale(scale, false);
             mb.SetEndScale(scale);
             meshes.Add(go);
+            Local.SpawnNode(go);
 
         }
     }

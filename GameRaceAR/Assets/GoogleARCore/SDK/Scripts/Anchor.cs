@@ -39,7 +39,7 @@ namespace GoogleARCore
         private TrackingState m_LastFrameTrackingState = TrackingState.Stopped;
 
         private bool m_IsSessionDestroyed = false;
-
+        static bool justone;
         /// <summary>
         /// Gets the tracking state of the anchor.
         /// </summary>
@@ -77,14 +77,15 @@ namespace GoogleARCore
                 return result;
             }
 
-            if (isCreate)
+            if (isCreate&&!justone)
             {
+              
                Anchor anchor = (new GameObject()).AddComponent<Anchor>();
                anchor.gameObject.name = "Anchor";
                anchor.m_NativeHandle = anchorNativeHandle;
                anchor.m_NativeSession = nativeApi;
                anchor.Update();
-
+                justone = anchor.gameObject.activeInHierarchy;
                s_AnchorDict.Add(anchorNativeHandle, anchor);
                return anchor;
             }

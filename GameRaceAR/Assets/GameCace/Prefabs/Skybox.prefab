@@ -92,6 +92,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4554360452029728}
   - component: {fileID: 114854066577755226}
+  - component: {fileID: 114831077533846938}
   m_Layer: 0
   m_Name: Skybox
   m_TagString: Untagged
@@ -110,7 +111,7 @@ GameObject:
   - component: {fileID: 33558860051081512}
   - component: {fileID: 23514425633048590}
   - component: {fileID: 65503525241721698}
-  - component: {fileID: 114366713665101782}
+  - component: {fileID: 114210853898609884}
   m_Layer: 0
   m_Name: Plane
   m_TagString: terria
@@ -643,7 +644,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114366713665101782
+--- !u!114 &114210853898609884
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -651,37 +652,41 @@ MonoBehaviour:
   m_GameObject: {fileID: 1327314236630624}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34677669769a00745935d619894fe176, type: 3}
+  m_Script: {fileID: 11500000, guid: 002260b82e93dd248abb143b65d6f8eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spline: {fileID: 0}
-  splines: []
-  lastNode:
-    position: {x: 0, y: 0, z: 0}
-    direction: {x: 0, y: 0, z: 0}
-  isCreate: 0
-  isRoadLine: 1
-  f: 10
-  position: {x: 0, y: 0, z: 0}
-  space: 6
-  height: 3
-  scale: {x: 0, y: 0, z: 0}
-  roadGeneretorPrefab: {fileID: 1362322658431260, guid: 4a72543d3981a8d41b4881c4f5345422,
-    type: 2}
-  bridgeGeneretorPrefab: {fileID: 0}
-  terrianController: {fileID: 0}
-  bridgeGO: {fileID: 0}
-  road: {fileID: 0}
-  bridge: {fileID: 0}
-  river: {fileID: 0}
-  roadLine: {fileID: 0}
-  roadHight: {fileID: 0}
-  heightRoad: 0
-  log: {fileID: 0}
-  gameDataProjectFilePath: /Data/road.json
-  roadData:
-    position: []
-    direction: []
+--- !u!114 &114831077533846938
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1314124031326098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 86
+    i1: 175
+    i2: 224
+    i3: 160
+    i4: 220
+    i5: 179
+    i6: 127
+    i7: 244
+    i8: 58
+    i9: 76
+    i10: 87
+    i11: 95
+    i12: 84
+    i13: 176
+    i14: 102
+    i15: 222
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 1
 --- !u!114 &114854066577755226
 MonoBehaviour:
   m_ObjectHideFlags: 1

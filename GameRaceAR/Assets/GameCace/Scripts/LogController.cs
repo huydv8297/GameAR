@@ -10,8 +10,8 @@ public class LogController : MonoBehaviour {
         log = GetComponent<Text>();
     }
 	
-	// Update is called once per frame
-	void Update () {
-		
+
+	public static void SetText (string s ) {
+        log.text = s;
 	}
 }

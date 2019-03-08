@@ -52,16 +52,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 402737a5186cd48cd86798c77074db79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StarPrefab: {fileID: 1517545619891756, guid: c162c528b139240d0881c95be8c04f2b, type: 2}
   AnchorPrefab: {fileID: 1930613698465500, guid: d7e51cffc46904f65957fa3aeb255467,
     type: 2}
+  skyBox: {fileID: 1314124031326098, guid: 56afe0a0dcb37ff43a4c575f54b066de, type: 2}
   roadPrefab: {fileID: 1362322658431260, guid: 4a72543d3981a8d41b4881c4f5345422, type: 2}
+  nodeRoad: {fileID: 1358715498507800, guid: 4a72543d3981a8d41b4881c4f5345422, type: 2}
   spline: {fileID: 0}
   splines: []
   lastNode:
     position: {x: 0, y: 0, z: 0}
     direction: {x: 0, y: 0, z: 0}
-  space: 0.5
+  meshScale: {x: 1, y: 1, z: 1}
+  material: {fileID: 2100000, guid: 47390f6bc8cfbde4fb24f5fbb333d7d2, type: 2}
+  mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+  rotation: {x: 0, y: 0, z: 0}
+  YOffset: 0
+  ZOffset: 0
+  scale: 1
+  meshes:
+  - {fileID: 1914719738003522, guid: 57da7d2c064f85248a130c72e35a15af, type: 2}
 --- !u!114 &114909607304245616
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -104,7 +104,7 @@ public class RoadManager : MonoBehaviour, CursorEvent
             isCreate = false;
         }
 
-        if (isCreate&& createRoadok)
+        if (isCreate)
             OnMouseDrag();
     }
 
@@ -136,20 +136,13 @@ public class RoadManager : MonoBehaviour, CursorEvent
     void CreateRoad()
     {
 
-        //RaycastHit hit;
-        //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        //Debug.DrawRay(ray.origin, ray.direction * Mathf.Infinity, Color.red, Mathf.Infinity);
-        //if (Physics.Raycast(ray, out hit, Mathf.Infinity))
-        //{
-
-        //    if (hit.transform.CompareTag("wall"))
-        //        return;
+      
         if(CustomCursor.HitTransform(transform))
         { 
 
             heightRoad = Container.Instance.plane.transform.position.y + 0.01f;
             position = CustomCursor.currentHit.point;
-            log.text = "" + position;
+            log.text = " " + position;
             position.y = heightRoad;
 
             if (spline == null)

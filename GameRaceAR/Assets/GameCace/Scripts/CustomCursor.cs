@@ -1,13 +1,16 @@
-﻿using System;
+﻿using GoogleARCore.Examples.CloudAnchors;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 
 public class CustomCursor : MonoBehaviour {
     public static RaycastHit currentHit;
     public static RaycastHit[] hits;
     static CursorEvent buttonOnClick;
     public static bool isClick;
+ 
     
     private void Update()
     {
@@ -26,7 +29,9 @@ public class CustomCursor : MonoBehaviour {
 
     public static void OnMouseClickDown()
     {
+    
         isClick = true;
+        CloudAnchorsExampleController.isCreate = true;
         if (buttonOnClick != null)
             buttonOnClick.OnClickDown();
         
@@ -34,9 +39,14 @@ public class CustomCursor : MonoBehaviour {
 
     public static void OnMouseClickUp()
     {
-       // isClick = false;
+        ///isClick = false;
+
+        CloudAnchorsExampleController.isCreate = false;
         if (buttonOnClick != null)
-            buttonOnClick.OnClickUp();        
+            buttonOnClick.OnClickUp();
+
+      
+
     }
 
     public static bool HitTransform(Transform transform)
