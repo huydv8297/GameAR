@@ -34,7 +34,7 @@ namespace GoogleARCore.Examples.CloudAnchors
         /// The UI Controller.
         /// </summary>
         public NetworkManagerUIController UIController;
-      
+
         /// <summary>
         /// The root for ARCore-specific GameObjects in the scene.
         /// </summary>
@@ -42,7 +42,7 @@ namespace GoogleARCore.Examples.CloudAnchors
         public static bool isCreate = false;
         public static bool isPlane = false;
         public bool createBox = true;
-    
+
         /// <summary>
         /// The helper that will calculate the World Origin offset when performing a raycast or generating planes.
         /// </summary>
@@ -114,7 +114,7 @@ namespace GoogleARCore.Examples.CloudAnchors
             // A Name is provided to the Game Object so it can be found by other Scripts instantiated as prefabs in the
             // scene.
             gameObject.name = "CloudAnchorsExampleController";
-           // ARCoreRoot.SetActive(false);
+            // ARCoreRoot.SetActive(false);
             ARKitRoot.SetActive(false);
             _ResetStatus();
         }
@@ -125,7 +125,7 @@ namespace GoogleARCore.Examples.CloudAnchors
         public void Update()
         {
             _UpdateApplicationLifecycle();
-        
+
             // If we are neither in hosting nor resolving mode then the update is complete.
             if (m_CurrentMode != ApplicationMode.Hosting && m_CurrentMode != ApplicationMode.Resolving)
             {
@@ -141,8 +141,8 @@ namespace GoogleARCore.Examples.CloudAnchors
             // If the player has not touched the screen then the update is complete.
             //if (!Input.GetMouseButtonDown(0))
             //    return;
-        
-           if(createBox&&m_CurrentMode==ApplicationMode.Hosting)
+
+            if (createBox && m_CurrentMode == ApplicationMode.Hosting)
             {
 
                 _InstantiateStar();
@@ -155,13 +155,13 @@ namespace GoogleARCore.Examples.CloudAnchors
 
                 _position = CustomCursor.currentHit.point;
                 TrackableHit hit;
-                if (ARCoreWorldOriginHelper.Raycast(_position.x,_position.y,
+                if (ARCoreWorldOriginHelper.Raycast(_position.x, _position.y,
                         TrackableHitFlags.PlaneWithinPolygon, out hit))
                 {
                     m_LastPlacedAnchor = hit.Trackable.CreateAnchor(hit.Pose);
-                 
+
                 }
-               
+
             }
             else
             {
@@ -171,7 +171,7 @@ namespace GoogleARCore.Examples.CloudAnchors
                     m_LastPlacedAnchor = m_ARKit.CreateAnchor(hitPose);
                 }
             }
-          
+
             // If there was an anchor placed, then instantiate the corresponding object.
             if (m_LastPlacedAnchor != null)
             {
@@ -179,7 +179,7 @@ namespace GoogleARCore.Examples.CloudAnchors
                 // instantiate a star, both in Hosting and Resolving modes.
                 if (_CanPlaceStars())
                 {
-                          
+
                 }
                 else if (!m_IsOriginPlaced && m_CurrentMode == ApplicationMode.Hosting)
                 {
@@ -189,20 +189,21 @@ namespace GoogleARCore.Examples.CloudAnchors
                 }
                 LogController.SetText("hit " + m_LastPlacedAnchor.transform.position.x);
             }
-           
+
             if (isCreate)
-                RayCastRoad();            
-            if(!isCreate && createRoad)
+                RayCastRoad();
+            if (!isCreate && createRoad)
                 playerLocal.SetTag();
-          
-            
+
+
         }
 
         void RayCastRoad()
         {
-            if (isPlane) {               
+            if (isPlane)
+            {
                 _position.y += 0.1f;
-                playerLocal.CreateRoad(_position,Quaternion.identity);               
+                playerLocal.CreateRoad(_position, Quaternion.identity);
             }
         }
         /// <summary>
@@ -307,7 +308,7 @@ namespace GoogleARCore.Examples.CloudAnchors
         private void _InstantiateAnchor()
         {
             // The anchor will be spawned by the host, so no networking Command is needed.
-          
+
             createRoad = true;
             playerLocal.SpawnAnchor(_position, Quaternion.identity, m_LastPlacedAnchor);
         }

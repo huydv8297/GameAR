@@ -105,13 +105,14 @@ namespace GoogleARCore.Examples.CloudAnchors
                 Debug.Log("khoi tao duong");
                 GameObject newSpline = Instantiate(roadPrefab,Vector3.zero, rotation) as GameObject ;
                 spline = newSpline.GetComponent<Spline>();
-                NetworkServer.Spawn(newSpline);
+             
                 splines.Add(spline);
                 spline.nodes[0].position = position;
                 spline.nodes[1].position = position;
                 Vector3 firstDirection = spline.nodes[0].position + 0.5f * (spline.nodes[1].position - spline.nodes[0].position);
                 spline.nodes[0].direction = firstDirection;
                 spline.nodes[1].direction = firstDirection;
+                NetworkServer.Spawn(newSpline);
             }
             else
             {

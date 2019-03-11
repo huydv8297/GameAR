@@ -79,6 +79,8 @@ public class ExempleRailling : MonoBehaviour
             go.GetComponent<MeshRenderer>().material = material;
             MeshBender mb = go.GetComponent<MeshBender>();
             go.AddComponent<NetworkIdentity>();
+            NetworkIdentity net = GetComponent<NetworkIdentity>();
+            net.localPlayerAuthority=true;
             mb.SetSourceMesh(mesh, false);
             go.AddComponent<NavMeshSourceTag>();
             mb.SetRotation(Quaternion.Euler(rotation), false);
